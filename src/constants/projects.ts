@@ -13,7 +13,6 @@ export const projects = [
     descriptions: [
       "On day 1, volunteered to take on the Chromecast for Optus Sport initiative with zero experience and rewrote the app from scratch.",
     ],
-    images: ["/images/subhub.png", "/images/subhub.png", "/images/subhub.png"],
   },
   {
     title: "Optus Sport Web",

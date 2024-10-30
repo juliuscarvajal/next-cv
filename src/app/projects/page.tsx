@@ -8,13 +8,18 @@ import { Fragment } from "react";
 
 export default function Projects() {
   return (
-    <div>
-      <ProfilePicture />
-      <div className="space-y-8 divide-y max-w-2xl">
+    <div className="divide-y">
+      <div className="space-y-4 pb-8">
+        <ProfilePicture />
+        <h1 className="text-4xl font-[family-name:var(--font-archivo-black)]">
+          Professional Projects
+        </h1>
+      </div>
+      <div className="space-y-8 divide-y">
         {projects.map((project) => {
           return (
             <div key={project.title} className="space-y-6 py-8">
-              <section className="space-y-2">
+              <section className="space-y-2 max-w-2xl">
                 <h1 className="leading-none md:leading-tight text-3xl font-[family-name:var(--font-archivo-black)]">
                   {project.title}
                 </h1>
@@ -22,7 +27,7 @@ export default function Projects() {
                   {project.subtitle}
                 </h2>
               </section>
-              <section className="space-y-4">
+              <section className="space-y-4 max-w-2xl">
                 {project.descriptions?.map((description, idx) => {
                   return (
                     <Fragment key={`${description}${idx}`}>
@@ -31,30 +36,32 @@ export default function Projects() {
                   );
                 })}
               </section>
-              <section className="w-full py-4 flex flex-wrap gap-4">
-                {project.images?.map((image, idx) => {
-                  return (
-                    <div key={`${image}${idx}`} className="w-[320px]">
-                      <AspectRatio ratio={16 / 9}>
-                        <Image
-                          src={image}
-                          alt="Image"
-                          className="rounded-md object-cover"
-                          fill
-                        />
-                      </AspectRatio>
-                    </div>
-                  );
-                })}
-              </section>
+              {project.images && (
+                <section className="w-full py-4 flex flex-wrap gap-4">
+                  {project.images?.map((image, idx) => {
+                    return (
+                      <div key={`${image}${idx}`} className="w-[320px]">
+                        <AspectRatio ratio={16 / 9}>
+                          <Image
+                            src={image}
+                            alt="Image"
+                            className="rounded-md object-cover"
+                            fill
+                          />
+                        </AspectRatio>
+                      </div>
+                    );
+                  })}
+                </section>
+              )}
+              <div className="pt-8">
+                <Link href="/">
+                  <Button className="w-full md:w-auto">Let's Talk</Button>
+                </Link>
+              </div>
             </div>
           );
         })}
-      </div>
-      <div className="flex justify-center py-8 fixed bottom-0 right-4">
-        <Link href="/">
-          <Button className="w-auto">Let's Talk</Button>
-        </Link>
       </div>
     </div>
   );
