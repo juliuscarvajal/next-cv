@@ -12,7 +12,6 @@ export const DarkModeToggle = ({ className = "" }) => {
       size="icon"
       variant="ghost"
       onClick={() => {
-        console.log("Current - Dark mode toggled", isDarkMode);
         setIsDarkMode(!isDarkMode);
         document.documentElement.classList.toggle("dark");
       }}

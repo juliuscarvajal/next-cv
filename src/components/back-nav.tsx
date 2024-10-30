@@ -11,7 +11,7 @@ export const BackNav = ({ className = "" }) => {
   }
   return (
     <Link href="/" className={className}>
-      <ChevronLeft />
+      <ChevronLeft width={32} height={32} />
     </Link>
   );
 };

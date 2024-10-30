@@ -12,11 +12,11 @@ const pageCopyText = {
     subtitle: "or a Full Stack Engineer...",
   },
   body: [
-    `I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
+    `Hello, I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
     `I'm passionate about building user interfaces and experiences that people love. I specialize in creating performant, responsive, and accessible websites using modern web technologies.`,
   ],
   cta: {
-    label: "Learn more",
+    label: "See my work",
   },
 };
 
@@ -80,19 +80,24 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-wrap lg:flex-nowrap gap-16 2xl:gap-16 w-full justify-around items-center">
-        <div className="space-y-8 max-w-md">
+        <div className="space-y-8 w-full lg:max-w-md">
           <section className="space-y-6">
             <ProfilePicture />
             <Header />
           </section>
-          <Link href="/projects" className="block">
-            <Button>{pageCopyText.cta.label}</Button>
-          </Link>
-          <section className="space-y-4">
+          <section className="space-y-4 font-bold text-accent-foreground">
             <Body />
           </section>
+          <div className="flex gap-4">
+            <Link href="/projects">
+              <Button>{pageCopyText.cta.label}</Button>
+            </Link>
+            <Link href="/">
+              <Button variant="outline">Hire me</Button>
+            </Link>
+          </div>
         </div>
-        <div className="space-y-8">
+        <div className="space-y-8 w-full">
           <ImageListSection
             title="Clients"
             images={companies}

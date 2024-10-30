@@ -6,6 +6,10 @@ export const projects = [
       "SubHub is a subscription management platform that allows users to manage, track and cancel their subscriptions in one.",
     ],
     images: ["/images/subhub.png", "/images/subhub.png", "/images/subhub.png"],
+    cta: {
+      label: "Go to SubHub",
+      href: "https://subhub.com.au",
+    },
   },
   {
     title: "Optus Sport Chromecast",
@@ -13,6 +17,10 @@ export const projects = [
     descriptions: [
       "On day 1, volunteered to take on the Chromecast for Optus Sport initiative with zero experience and rewrote the app from scratch.",
     ],
+    cta: {
+      label: "Go to Optus Sport",
+      href: "https://sport.optus.com.au",
+    },
   },
   {
     title: "Optus Sport Web",
@@ -21,6 +29,10 @@ export const projects = [
       "Took on the Mobile OTP feature & refactored the Optus Sport Web Sign up and Voucher form to make it more maintainable. Afterwards, took on the Credit Card feature for Optus Sport Web and the supporting APIs. All successfully delivered.",
     ],
     images: ["/images/subhub.png", "/images/subhub.png", "/images/subhub.png"],
+    cta: {
+      label: "Go to Optus Sport",
+      href: "https://sport.optus.com.au",
+    },
   },
   {
     title: "Credit Card Application",
@@ -30,6 +42,10 @@ export const projects = [
       "Mobile web app for existing users of Qantas Credit Cards to keep track of transactions. Implemented multiple pages for activation flow resulting in common & reusable components.",
     ],
     images: ["/images/subhub.png", "/images/subhub.png"],
+    cta: {
+      label: "Go to Qantas Money",
+      href: "https://www.qantasmoney.com/credit-cards",
+    },
   },
   {
     title: "Customer Portal (Concrete)",
