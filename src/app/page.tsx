@@ -1,4 +1,5 @@
 import { ImageList, ImageListProps } from "@/components/image-list";
+import { ImageListSection } from "@/components/image-list-section";
 import { ProfilePicture } from "@/components/profile-picture";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -43,42 +44,35 @@ const Body = () => {
   );
 };
 
-type ImageListSectionProps = ImageListProps & {
-  title: string;
+const Ctas = () => {
+  return (
+    <>
+      <Link href="/projects/commercial">
+        <Button>{pageCopyText.cta.label}</Button>
+      </Link>
+      <Link href="/projects/contact">
+        <Button variant="outline">Hire me</Button>
+      </Link>
+    </>
+  );
 };
 
-const ImageListSection = ({
-  images,
-  width,
-  height,
-  title,
-  className = "",
-}: ImageListSectionProps) => {
+const Aside = () => {
   return (
-    <Card className="bg-accent">
-      <CardHeader className="flex flex-row items-center justify-between">
-        <h1 className="text-sm font-bold text-muted-foreground">{title}</h1>
-        <div className="text-sm font-bold text-muted-foreground">
-          <Link
-            href="https://www.linkedin.com/in/juliuscarvajal"
-            target="_blank"
-            className="underline underline-offset-4"
-          >
-            + more
-          </Link>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="grid gap-4 grid-cols-4 lg:grid-cols-6 items-center">
-          <ImageList
-            images={images}
-            width={width}
-            height={height}
-            className={className}
-          />
-        </div>
-      </CardContent>
-    </Card>
+    <>
+      <ImageListSection
+        title="Clients"
+        images={companies}
+        width={64}
+        height={64}
+      />
+      <ImageListSection
+        title="Tech stack"
+        images={stacks}
+        width={48}
+        height={48}
+      />
+    </>
   );
 };
 
@@ -91,31 +85,15 @@ export default function Home() {
             <ProfilePicture />
             <Header />
           </section>
+          <div className="flex gap-4">
+            <Ctas />
+          </div>
           <section className="space-y-4 font-bold text-accent-foreground">
             <Body />
           </section>
-          <div className="flex gap-4">
-            <Link href="/projects">
-              <Button>{pageCopyText.cta.label}</Button>
-            </Link>
-            <Link href="/">
-              <Button variant="outline">Hire me</Button>
-            </Link>
-          </div>
         </div>
         <div className="space-y-8 w-full lg:max-w-xl">
-          <ImageListSection
-            title="Clients"
-            images={companies}
-            width={64}
-            height={64}
-          />
-          <ImageListSection
-            title="Tech stack"
-            images={stacks}
-            width={48}
-            height={48}
-          />
+          <Aside />
         </div>
       </div>
     </>
