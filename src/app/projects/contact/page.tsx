@@ -1,6 +1,6 @@
 import { Mailer } from "@/components/mailer";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { AtSign } from "lucide-react";
+import { AtSign, BriefcaseBusiness } from "lucide-react";
 import Link from "next/link";
 
 export default function Contact() {
@@ -28,7 +28,7 @@ export default function Contact() {
         </Card>
         <Card className="bg-accent">
           <CardHeader>
-            <h1 className="text-xl font-bold">Others</h1>
+            <h1 className="text-xl font-bold">Socials</h1>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="flex gap-2 items-center">
@@ -39,6 +39,23 @@ export default function Contact() {
                 className="underline underline-offset-4"
               >
                 LinkedIn
+              </Link>
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="bg-accent">
+          <CardHeader>
+            <h1 className="text-xl font-bold">Info</h1>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="flex gap-2 items-center">
+              <BriefcaseBusiness />
+              <Link
+                href="https://abr.business.gov.au/ABN/View?id=27488015405"
+                className="underline underline-offset-4"
+                target="_blank"
+              >
+                ABN: 27 488 015 405
               </Link>
             </p>
           </CardContent>

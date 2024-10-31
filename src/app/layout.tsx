@@ -5,6 +5,7 @@ import { DarkModeToggle } from "@/components/dark-mode-toggle";
 import { BackNav } from "@/components/back-nav";
 import Link from "next/link";
 import { TimeNow } from "@/components/time-now";
+import { Copyright } from "lucide-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,20 +31,40 @@ export const metadata: Metadata = {
 
 const Footer = () => {
   return (
-    <footer className="row-start-3 p-4 text-xs font-bold flex gap-6 flex-wrap items-center justify-center">
-      <div className="flex divide-x gap-4 flex-wrap">
-        <div className="pl-4 md:first:pl-0">ABN: 27 488 015 405</div>
-        <div className="pl-4 md:first:pl-0">
-          Email: juliuscarvajal21@gmail.com
+    <>
+      <footer className="row-start-3 p-4 text-xs font-bold flex flex-col items-center justify-center gap-6">
+        <div className="flex divide-x gap-4 flex-wrap">
+          <Link
+            href="/projects"
+            className="block underline underline-offset-4 pl-4 md:first:pl-0"
+          >
+            All Projects
+          </Link>
+          <Link
+            href="/projects/commercial"
+            className="block underline underline-offset-4 pl-4 md:first:pl-0"
+          >
+            Commercial
+          </Link>
+          <Link
+            href="/projects/personal"
+            className="block underline underline-offset-4 pl-4 md:first:pl-0"
+          >
+            Personal
+          </Link>
+          <Link
+            href="/projects/contact"
+            className="block underline underline-offset-4 pl-4 md:first:pl-0"
+          >
+            Contact me
+          </Link>
         </div>
-        <Link
-          href="/projects"
-          className="block underline underline-offset-4 pl-4 md:first:pl-0"
-        >
-          All Projects
-        </Link>
-      </div>
-    </footer>
+        <div className="flex gap-2 items-center">
+          <Copyright />
+          2024 Julius Carvajal
+        </div>
+      </footer>
+    </>
   );
 };
 

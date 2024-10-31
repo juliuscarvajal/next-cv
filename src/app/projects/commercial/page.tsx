@@ -52,7 +52,7 @@ export default function Projects() {
                 )}
               </div>
               <section className="space-y-4">
-                <div className="w-full">
+                <div className="w-full space-y-2">
                   {project.descriptions?.map((description, idx) => {
                     return (
                       <Fragment key={`${description}${idx}`}>
@@ -84,7 +84,7 @@ export default function Projects() {
                 <Link
                   href={project.cta?.href}
                   target="_blank"
-                  className="underline underline-offset-4"
+                  className="block underline underline-offset-4"
                 >
                   {project.cta?.label}
                 </Link>
