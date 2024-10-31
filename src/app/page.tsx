@@ -52,24 +52,30 @@ const ImageListSection = ({
   width,
   height,
   title,
+  className = "",
 }: ImageListSectionProps) => {
   return (
     <Card className="bg-accent">
-      <CardHeader>
+      <CardHeader className="flex flex-row items-center justify-between">
         <h1 className="text-sm font-bold text-muted-foreground">{title}</h1>
+        <div className="text-sm font-bold text-muted-foreground">
+          <Link
+            href="https://www.linkedin.com/in/juliuscarvajal"
+            target="_blank"
+            className="underline underline-offset-4"
+          >
+            + more
+          </Link>
+        </div>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-wrap gap-4 items-center">
-          <ImageList images={images} width={width} height={height} />
-          <div className="text-sm font-bold text-muted-foreground">
-            <Link
-              href="https://www.linkedin.com/in/juliuscarvajal"
-              target="_blank"
-              className="underline underline-offset-4"
-            >
-              + more
-            </Link>
-          </div>
+        <div className="grid gap-4 grid-cols-4 lg:grid-cols-6 items-center">
+          <ImageList
+            images={images}
+            width={width}
+            height={height}
+            className={className}
+          />
         </div>
       </CardContent>
     </Card>
@@ -97,7 +103,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="space-y-8 w-full">
+        <div className="space-y-8 w-full lg:max-w-xl">
           <ImageListSection
             title="Clients"
             images={companies}

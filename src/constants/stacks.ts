@@ -17,8 +17,24 @@ export const stacks = [
     src: "/images/stacks/Tailwind CSS.png",
   },
   {
+    alt: "JavaScript",
+    src: "/images/stacks/JavaScript.png",
+  },
+  {
+    alt: "Node.js",
+    src: "/images/stacks/Node.js.png",
+  },
+  {
     alt: "GraphQL",
     src: "/images/stacks/GraphQL.png",
+  },
+  {
+    alt: "Golang",
+    src: "/images/stacks/Go.png",
+  },
+  {
+    alt: "PostgreSQL",
+    src: "/images/stacks/PostgresSQL.png",
   },
   {
     alt: "AWS",
@@ -27,6 +43,19 @@ export const stacks = [
   },
   {
     alt: "NX Monorepo",
-    src: "/images/stacks/nx-logo.png",
+    src: "/images/stacks/nx_logo.png",
+    className: "dark:bg-white",
   },
+  {
+    alt: "CircleCI",
+    src: "/images/stacks/circleci.png",
+    className: "dark:bg-white",
+  },
+  { alt: "Git", src: "/images/stacks/git.png" },
+  {
+    alt: "GitHub",
+    src: "/images/stacks/github.png",
+    className: "dark:bg-white",
+  },
+  { alt: "GitLab", src: "/images/stacks/gitlab.png" },
 ];

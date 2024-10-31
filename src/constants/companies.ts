@@ -5,11 +5,15 @@ export const companies = [
   },
   {
     alt: "Qantas",
-    src: "/images/companies/qantas_logo.png",
+    src: "/images/companies/qantas_logo.jpeg",
   },
   {
     alt: "Boral",
-    src: "/images/companies/boral_logo.png",
+    src: "/images/companies/boral_logo.jpeg",
+  },
+  {
+    alt: "Flamingo AI",
+    src: "/images/companies/flamingoai_logo.jpeg",
   },
   {
     alt: "Coates Digital",
