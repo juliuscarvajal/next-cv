@@ -5,6 +5,7 @@ import { DarkModeToggle } from "@/components/dark-mode-toggle";
 import { BackNav } from "@/components/back-nav";
 import Link from "next/link";
 import { TimeNow } from "@/components/time-now";
+import { NavLink } from "@/components/nav-link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,30 +34,10 @@ const Footer = () => {
     <>
       <footer className="row-start-3 p-4 text-xs font-bold flex flex-col items-center justify-center gap-6">
         <div className="flex divide-x gap-4 flex-wrap">
-          <Link
-            href="/projects"
-            className="block underline underline-offset-4 pl-4 md:first:pl-0"
-          >
-            All Projects
-          </Link>
-          <Link
-            href="/projects/commercial"
-            className="block underline underline-offset-4 pl-4 md:first:pl-0"
-          >
-            Commercial
-          </Link>
-          <Link
-            href="/projects/personal"
-            className="block underline underline-offset-4 pl-4 md:first:pl-0"
-          >
-            Personal
-          </Link>
-          <Link
-            href="/projects/contact"
-            className="block underline underline-offset-4 pl-4 md:first:pl-0"
-          >
-            Contact me
-          </Link>
+          <NavLink href="/projects">All Projects</NavLink>
+          <NavLink href="/projects/commercial">Commercial</NavLink>
+          <NavLink href="/projects/personal">Personal</NavLink>
+          <NavLink href="/projects/contact">Contact me</NavLink>
         </div>
       </footer>
     </>

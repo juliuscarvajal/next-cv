@@ -3,7 +3,7 @@
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 
-export const LinkWithActiveStyles = ({
+export const NavLink = ({
   href,
   children,
 }: LinkProps & { children: React.ReactNode }) => {

@@ -25,18 +25,22 @@ const ProjectsSummary = ({ title, projects, href }: ProjectsSummaryProps) => {
 
 export default function Projects() {
   return (
-    <div className="space-y-4">
-      <ProjectsSummary
-        title="Commercial Projects"
-        projects={projects}
-        href="/projects/commercial"
-      />
-      <ProjectsSummary
-        title="Personal Projects"
-        projects={personalProjects}
-        href="/projects/personal"
-      />
-      <Button>Let's work together</Button>
+    <div className="space-y-8">
+      <div className="space-y-4">
+        <ProjectsSummary
+          title="Commercial Web Apps"
+          projects={projects}
+          href="/projects/commercial"
+        />
+        <ProjectsSummary
+          title="Personal Web Apps"
+          projects={personalProjects}
+          href="/projects/personal"
+        />
+      </div>
+      <Link href="/projects/contact" className="block">
+        <Button>Let's work together</Button>
+      </Link>
     </div>
   );
 }

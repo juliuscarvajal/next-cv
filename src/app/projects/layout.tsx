@@ -1,4 +1,4 @@
-import { LinkWithActiveStyles } from "@/components/link-with-active-styles";
+import { NavLink } from "@/components/nav-link";
 import { ProfileInfo } from "@/components/profile-info";
 import { ProfilePicture } from "@/components/profile-picture";
 
@@ -12,15 +12,9 @@ export default function ProjectsLayout({
         <ProfileInfo />
       </div>
       <nav className="flex gap-4">
-        <LinkWithActiveStyles href="/projects/commercial">
-          Commercial
-        </LinkWithActiveStyles>
-        <LinkWithActiveStyles href="/projects/personal">
-          Personal
-        </LinkWithActiveStyles>
-        <LinkWithActiveStyles href="/projects/contact">
-          Contact me
-        </LinkWithActiveStyles>
+        <NavLink href="/projects/commercial">Commercial</NavLink>
+        <NavLink href="/projects/personal">Personal</NavLink>
+        <NavLink href="/projects/contact">Contact me</NavLink>
       </nav>
       <div className="w-full">{children}</div>
     </div>
