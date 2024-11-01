@@ -1,16 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
-import { personalProjects, Project, projects } from "@/constants/projects";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 type ProjectsSummaryProps = {
   title: string;
-  projects: Array<Project>;
   href: string;
 };
 
-const ProjectsSummary = ({ title, projects, href }: ProjectsSummaryProps) => {
+const ProjectsSummary = ({ title, href }: ProjectsSummaryProps) => {
   return (
     <Link href={href} className="block">
       <Card className="bg-muted">
@@ -29,14 +27,9 @@ export default function Projects() {
       <div className="space-y-4">
         <ProjectsSummary
           title="Commercial Web Apps"
-          projects={projects}
           href="/projects/commercial"
         />
-        <ProjectsSummary
-          title="Personal Web Apps"
-          projects={personalProjects}
-          href="/projects/personal"
-        />
+        <ProjectsSummary title="Personal Web Apps" href="/projects/personal" />
       </div>
       <Link href="/projects/contact" className="block">
         <Button>Let's work together</Button>

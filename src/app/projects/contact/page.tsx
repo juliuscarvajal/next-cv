@@ -9,7 +9,7 @@ export default function Contact() {
       <div className="space-y-8 pb-8">
         <div className="space-y-4">
           <h1 className="text-5xl leading-none font-[family-name:var(--font-archivo-black)]">
-            Need a hand with your project?
+            Need a hand with your web app?
           </h1>
           <div className="space-y-2">
             <p>
@@ -28,7 +28,7 @@ export default function Contact() {
         </Card>
         <Card className="bg-accent">
           <CardHeader>
-            <h1 className="text-xl font-bold">Socials</h1>
+            <h1 className="text-xl font-bold">Info</h1>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="flex gap-2 items-center">
@@ -41,13 +41,6 @@ export default function Contact() {
                 LinkedIn
               </Link>
             </p>
-          </CardContent>
-        </Card>
-        <Card className="bg-accent">
-          <CardHeader>
-            <h1 className="text-xl font-bold">Info</h1>
-          </CardHeader>
-          <CardContent className="space-y-4">
             <p className="flex gap-2 items-center">
               <BriefcaseBusiness />
               <Link

@@ -28,7 +28,7 @@ export const ImageListSection = ({
         </div>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-4 grid-cols-4 lg:grid-cols-6 items-center">
+        <div className="grid gap-4 grid-cols-4 md:grid-cols-6 items-center">
           <ImageList
             images={images}
             width={width}
