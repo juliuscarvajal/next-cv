@@ -5,7 +5,6 @@ import { DarkModeToggle } from "@/components/dark-mode-toggle";
 import { BackNav } from "@/components/back-nav";
 import Link from "next/link";
 import { TimeNow } from "@/components/time-now";
-import { Copyright } from "lucide-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -59,10 +58,6 @@ const Footer = () => {
             Contact me
           </Link>
         </div>
-        <div className="flex gap-2 items-center">
-          <Copyright />
-          2024 Julius Carvajal
-        </div>
       </footer>
     </>
   );
@@ -94,8 +89,8 @@ export default function RootLayout({
           <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
             <Nav />
             <div className="flex flex-col gap-8 row-start-2">{children}</div>
+            <Footer />
           </div>
-          <Footer />
         </main>
       </body>
     </html>

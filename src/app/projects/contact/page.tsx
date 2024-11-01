@@ -9,7 +9,7 @@ export default function Contact() {
       <div className="space-y-8 pb-8">
         <div className="space-y-4">
           <h1 className="text-5xl leading-none font-[family-name:var(--font-archivo-black)]">
-            Need a hand on your project?
+            Need a hand with your project?
           </h1>
           <div className="space-y-2">
             <p>

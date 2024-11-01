@@ -1,22 +1,6 @@
+import { LinkWithActiveStyles } from "@/components/link-with-active-styles";
+import { ProfileInfo } from "@/components/profile-info";
 import { ProfilePicture } from "@/components/profile-picture";
-import Link from "next/link";
-
-const ProfileInfo = () => {
-  return (
-    <div className="font-bold">
-      <div className="text-lg text-accent-foreground font-[family-name:var(--font-archivo-black)]">
-        Julius Carvajal
-      </div>
-      <div className="text-sm text-muted-foreground text-wrap">
-        Front End Web Developer
-      </div>
-      <div className="text-sm text-muted-foreground text-wrap">Full Stack</div>
-      <div className="text-sm text-muted-foreground">
-        juliuscarvajal21@gmail.com
-      </div>
-    </div>
-  );
-};
 
 export default function ProjectsLayout({
   children,
@@ -28,23 +12,17 @@ export default function ProjectsLayout({
         <ProfileInfo />
       </div>
       <nav className="flex gap-4">
-        <Link
-          href="/projects/commercial"
-          className="underline underline-offset-4"
-        >
+        <LinkWithActiveStyles href="/projects/commercial">
           Commercial
-        </Link>
-        <Link
-          href="/projects/personal"
-          className="underline underline-offset-4"
-        >
+        </LinkWithActiveStyles>
+        <LinkWithActiveStyles href="/projects/personal">
           Personal
-        </Link>
-        <Link href="/projects/contact" className="underline underline-offset-4">
+        </LinkWithActiveStyles>
+        <LinkWithActiveStyles href="/projects/contact">
           Contact me
-        </Link>
+        </LinkWithActiveStyles>
       </nav>
-      <div>{children}</div>
+      <div className="w-full">{children}</div>
     </div>
   );
 }

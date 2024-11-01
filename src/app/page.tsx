@@ -1,8 +1,6 @@
-import { ImageList, ImageListProps } from "@/components/image-list";
 import { ImageListSection } from "@/components/image-list-section";
 import { ProfilePicture } from "@/components/profile-picture";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { companies } from "@/constants/companies";
 import { stacks } from "@/constants/stacks";
 import Link from "next/link";
@@ -10,7 +8,7 @@ import Link from "next/link";
 const pageCopyText = {
   header: {
     title: "Front End Web Developer",
-    subtitle: "or a Full Stack Engineer...",
+    subtitle: "or a Full Stack Engineer when needed",
   },
   body: [
     `Hello, I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
@@ -92,7 +90,7 @@ export default function Home() {
             <Body />
           </section>
         </div>
-        <div className="space-y-8 w-full lg:max-w-xl">
+        <div className="space-y-8 w-full lg:max-w-2xl">
           <Aside />
         </div>
       </div>

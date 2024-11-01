@@ -21,9 +21,9 @@ export const TimeNow = () => {
   const time = useTimeInterval();
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   return (
-    <div className="flex flex-col items-end">
+    <div className="flex flex-col items-end text-xs text-muted-foreground font-bold">
       <div>{timezone}</div>
-      <div>
+      <div suppressHydrationWarning>
         {time.toLocaleTimeString("en-US", {
           hour: "numeric",
           minute: "numeric",
