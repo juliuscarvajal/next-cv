@@ -1,9 +1,9 @@
+import { NavLink } from "@/components/nav-link";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { companies } from "@/constants/companies";
 import { Project, projects } from "@/constants/projects";
 import Image from "next/image";
-import Link from "next/link";
 import { Fragment } from "react";
 
 const ProjectHeader = () => {
@@ -88,18 +88,12 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
         </section>
       )}
       {project.cta && (
-        <Link
-          href={project.cta?.href}
-          target="_blank"
-          className="block underline underline-offset-4"
-        >
-          {project.cta?.label}
-        </Link>
+        <NavLink href={project.cta?.href}>{project.cta?.label}</NavLink>
       )}
       <div className="pt-8 flex gap-4">
-        <Link href="/projects/contact">
+        <NavLink href="/projects/contact">
           <Button className="w-full md:w-auto font-bold">Let's Talk</Button>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

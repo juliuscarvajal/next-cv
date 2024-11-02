@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ImageList, ImageListProps } from "./image-list";
 import { Card, CardContent, CardHeader } from "./ui/card";
+import { NavLink } from "./nav-link";
 
 type ImageListSectionProps = ImageListProps & {
   title: string;
@@ -18,13 +18,9 @@ export const ImageListSection = ({
       <CardHeader className="flex flex-row items-center justify-between">
         <h1 className="text-sm font-bold text-muted-foreground">{title}</h1>
         <div className="text-sm font-bold text-muted-foreground">
-          <Link
-            href="https://www.linkedin.com/in/juliuscarvajal"
-            target="_blank"
-            className="underline underline-offset-4"
-          >
+          <NavLink href="https://www.linkedin.com/in/juliuscarvajal">
             + more
-          </Link>
+          </NavLink>
         </div>
       </CardHeader>
       <CardContent>

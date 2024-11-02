@@ -1,7 +1,7 @@
 import { Mailer } from "@/components/mailer";
+import { NavLink } from "@/components/nav-link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { AtSign, BriefcaseBusiness } from "lucide-react";
-import Link from "next/link";
 
 export default function Contact() {
   return (
@@ -33,23 +33,15 @@ export default function Contact() {
           <CardContent className="space-y-4">
             <p className="flex gap-2 items-center">
               <AtSign />
-              <Link
-                href="https://www.linkedin.com/in/juliuscarvajal"
-                target="_blank"
-                className="underline underline-offset-4"
-              >
+              <NavLink href="https://www.linkedin.com/in/juliuscarvajal">
                 LinkedIn
-              </Link>
+              </NavLink>
             </p>
             <p className="flex gap-2 items-center">
               <BriefcaseBusiness />
-              <Link
-                href="https://abr.business.gov.au/ABN/View?id=27488015405"
-                className="underline underline-offset-4"
-                target="_blank"
-              >
+              <NavLink href="https://abr.business.gov.au/ABN/View?id=27488015405">
                 ABN: 27 488 015 405
-              </Link>
+              </NavLink>
             </p>
           </CardContent>
         </Card>

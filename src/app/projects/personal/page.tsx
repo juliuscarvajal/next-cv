@@ -1,10 +1,9 @@
-import { ProfilePicture } from "@/components/profile-picture";
+import { NavLink } from "@/components/nav-link";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { companies } from "@/constants/companies";
 import { personalProjects } from "@/constants/projects";
 import Image from "next/image";
-import Link from "next/link";
 import { Fragment } from "react";
 
 export default function Projects() {
@@ -81,17 +80,17 @@ export default function Projects() {
                 </section>
               )}
               <div className="pt-8 flex gap-4">
-                <Link href="/">
+                <NavLink href="/">
                   <Button className="w-full md:w-auto font-bold">
                     Let's Talk
                   </Button>
-                </Link>
+                </NavLink>
                 {project.cta && (
-                  <Link href={project.cta?.href} target="_blank">
+                  <NavLink href={project.cta?.href}>
                     <Button className="w-full md:w-auto mr-4" variant="outline">
                       {project.cta?.label}
                     </Button>
-                  </Link>
+                  </NavLink>
                 )}
               </div>
             </div>

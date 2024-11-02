@@ -1,7 +1,7 @@
+import { NavLink } from "@/components/nav-link";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
 
 type ProjectsSummaryProps = {
   title: string;
@@ -10,14 +10,14 @@ type ProjectsSummaryProps = {
 
 const ProjectsSummary = ({ title, href }: ProjectsSummaryProps) => {
   return (
-    <Link href={href} className="block">
+    <NavLink href={href} className="block">
       <Card className="bg-muted">
         <CardHeader className="flex flex-row justify-between items-center">
           <h1 className="text-xl font-bold">{title}</h1>
           <ChevronRight />
         </CardHeader>
       </Card>
-    </Link>
+    </NavLink>
   );
 };
 
@@ -31,9 +31,9 @@ export default function Projects() {
         />
         <ProjectsSummary title="Personal Web Apps" href="/projects/personal" />
       </div>
-      <Link href="/projects/contact" className="block">
+      <NavLink href="/projects/contact" className="block">
         <Button>Let's work together</Button>
-      </Link>
+      </NavLink>
     </div>
   );
 }

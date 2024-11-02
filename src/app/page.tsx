@@ -1,9 +1,9 @@
 import { ImageListSection } from "@/components/image-list-section";
+import { NavLink } from "@/components/nav-link";
 import { ProfilePicture } from "@/components/profile-picture";
 import { Button } from "@/components/ui/button";
 import { companies } from "@/constants/companies";
 import { stacks } from "@/constants/stacks";
-import Link from "next/link";
 
 const pageCopyText = {
   header: {
@@ -45,12 +45,12 @@ const Body = () => {
 const Ctas = () => {
   return (
     <>
-      <Link href="/projects/commercial">
+      <NavLink href="/projects/commercial">
         <Button>{pageCopyText.cta.label}</Button>
-      </Link>
-      <Link href="/projects/contact">
+      </NavLink>
+      <NavLink href="/projects/contact">
         <Button variant="outline">Hire me</Button>
-      </Link>
+      </NavLink>
     </>
   );
 };
