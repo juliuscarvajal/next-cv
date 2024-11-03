@@ -1,7 +1,7 @@
-import Image, { ImageProps } from "next/image";
+import { ImgHTMLAttributes } from "react";
 
-export type ImageListProps = Partial<ImageProps> & {
-  images: Array<ImageProps>;
+export type ImageListProps = Partial<ImgHTMLAttributes<HTMLImageElement>> & {
+  images: Array<ImgHTMLAttributes<HTMLImageElement>>;
 };
 
 export const ImageList = (props: ImageListProps) => {
@@ -23,11 +23,12 @@ export const ImageList = (props: ImageListProps) => {
               key={imgAlt}
               className={`max-h-[${height}px] w-auto relative flex flex-col items-center gap-2 h-full`}
             >
-              <Image
+              <img
                 width={width}
                 height={height}
                 alt={imgAlt}
                 className={`${individualClassName} ${className}`}
+                loading="lazy"
                 {...imageProps}
                 {...individualImageProps}
               />

@@ -123,13 +123,13 @@ export const personalProjects: Array<Project> = [
   {
     name: "Lottie",
     title: "Lottie Shop",
-    subtitle: "Lottie",
+    subtitle: "Shop for Lottie animations",
     descriptions: [
-      "SubHub is a subscription management platform that allows users to manage, track and cancel their subscriptions in one.",
+      "LottieFiles Shop is a platform for buying and selling Lottie animations.",
     ],
     cta: {
-      label: "Go to SubHub",
-      href: "https://subhub.com.au",
+      label: "Go to Lottie Files Shop",
+      href: "https://lottiefiles.shop",
     },
   },
 ];

@@ -45,11 +45,13 @@ const Body = () => {
 const Ctas = () => {
   return (
     <>
-      <NavLink href="/projects/commercial">
-        <Button>{pageCopyText.cta.label}</Button>
+      <NavLink href="/projects/commercial" className="w-full md:w-auto">
+        <Button className="w-full">{pageCopyText.cta.label}</Button>
       </NavLink>
-      <NavLink href="/projects/contact">
-        <Button variant="outline">Hire me</Button>
+      <NavLink href="/projects/contact" className="w-full md:w-auto">
+        <Button className="w-full" variant="outline">
+          Hire me
+        </Button>
       </NavLink>
     </>
   );
@@ -83,7 +85,7 @@ export default function Home() {
             <ProfilePicture />
             <Header />
           </section>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             <Ctas />
           </div>
           <section className="space-y-4 font-bold text-accent-foreground">

@@ -32,7 +32,7 @@ export default function Projects() {
         <ProjectsSummary title="Personal Web Apps" href="/projects/personal" />
       </div>
       <NavLink href="/projects/contact" className="block">
-        <Button>Let's work together</Button>
+        <Button>{`Let's work together`}</Button>
       </NavLink>
     </div>
   );

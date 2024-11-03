@@ -12,7 +12,11 @@ export const BackNav = ({ className = "" }) => {
     return <div></div>; // NOTE: Placholder so that the other components won't shift
   }
   const onClick = () => {
-    pathname.startsWith("/projects") ? router.replace("/") : router.back();
+    if (pathname.startsWith("/projects")) {
+      router.replace("/");
+      return;
+    }
+    router.back();
   };
   return (
     <Button size="icon" variant="ghost" className={className} onClick={onClick}>

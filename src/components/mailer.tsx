@@ -26,7 +26,7 @@ export const Mailer = () => {
           <a
             href={`mailto:juliuscarvajal21@gmail.com?subject=${subject}&body=${body}`}
           >
-            Send
+            Open Mail App
           </a>
         </Button>
       </div>
