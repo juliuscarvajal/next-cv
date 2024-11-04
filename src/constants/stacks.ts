@@ -46,12 +46,12 @@ export const stacks = [
     src: "/images/stacks/nx_logo.png",
     className: "dark:bg-white",
   },
-  // {
-  //   alt: "CircleCI",
-  //   src: "/images/stacks/circleci.png",
-  //   className: "dark:bg-white",
-  // },
-  // { alt: "Git", src: "/images/stacks/git.png" },
-  // { alt: "GitHub", src: "/images/stacks/github.png" },
-  // { alt: "GitLab", src: "/images/stacks/gitlab.png" },
+  {
+    alt: "CircleCI",
+    src: "/images/stacks/circleci.png",
+    className: "dark:bg-white",
+  },
+  { alt: "Git", src: "/images/stacks/git.png" },
+  { alt: "GitHub", src: "/images/stacks/github.png" },
+  { alt: "GitLab", src: "/images/stacks/gitlab.png" },
 ];
