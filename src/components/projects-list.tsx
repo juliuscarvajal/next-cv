@@ -25,7 +25,7 @@ type ProjectListItemProps = ProjectProps & {
 const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
   return (
     <div key={project.title} className="space-y-6 pt-8">
-      <div className="space-y-2 flex justify-between items-center gap-4">
+      <div className="flex justify-between items-center gap-4">
         <div className="space-y-2">
           <h1 className="leading-none text-2xl font-[family-name:var(--font-archivo-black)] text-wrap">
             {project.title}
@@ -35,12 +35,12 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
           </h2>
         </div>
         {company?.src && (
-          <div>
+          <div className="shrink-0">
             <Image
               src={company?.src}
               alt={company?.name}
-              width={48}
-              height={48}
+              width={64}
+              height={64}
             />
           </div>
         )}
@@ -80,8 +80,8 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
         </NavLink>
       )}
       <div className="pt-4 flex gap-4">
-        <NavLink href="/projects/contact">
-          <Button className="w-full md:w-auto font-bold">{`Let's Talk`}</Button>
+        <NavLink href="/projects/contact" className="w-full sm:w-auto">
+          <Button className="w-full font-bold">{`Let's Talk`}</Button>
         </NavLink>
       </div>
     </div>

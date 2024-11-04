@@ -14,7 +14,7 @@ export const stacks = [
   },
   {
     alt: "Tailwind CSS",
-    src: "/images/stacks/Tailwind CSS.png",
+    src: "/images/stacks/TailwindCSS.png",
   },
   {
     alt: "JavaScript",
@@ -48,10 +48,10 @@ export const stacks = [
   },
   {
     alt: "CircleCI",
-    src: "/images/stacks/circleci.png",
+    src: "/images/stacks/CircleCI.png",
     className: "dark:bg-white",
   },
-  { alt: "Git", src: "/images/stacks/git.png" },
-  { alt: "GitHub", src: "/images/stacks/github.png" },
-  { alt: "GitLab", src: "/images/stacks/gitlab.png" },
+  { alt: "Git", src: "/images/stacks/Git.png" },
+  { alt: "GitHub", src: "/images/stacks/GitHub.png" },
+  { alt: "GitLab", src: "/images/stacks/GitLab.png" },
 ];

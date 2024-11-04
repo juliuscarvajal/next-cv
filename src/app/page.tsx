@@ -22,7 +22,7 @@ const pageCopyText = {
 const Header = () => {
   return (
     <div className="space-y-2">
-      <h1 className="leading-none text-5xl font-[family-name:var(--font-archivo-black)]">
+      <h1 className="leading-none text-4xl md:text-5xl font-[family-name:var(--font-archivo-black)]">
         {pageCopyText.header.title}
       </h1>
       <h2 className="leading-tight text-sm text-muted-foreground font-[family-name:var(--font-geist-mono)]">
@@ -45,10 +45,10 @@ const Body = () => {
 const Ctas = () => {
   return (
     <>
-      <NavLink href="/projects/commercial" className="w-full md:w-auto">
+      <NavLink href="/projects/commercial" className="w-full sm:w-auto">
         <Button className="w-full">{pageCopyText.cta.label}</Button>
       </NavLink>
-      <NavLink href="/projects/contact" className="w-full md:w-auto">
+      <NavLink href="/projects/contact" className="w-full sm:w-auto">
         <Button className="w-full" variant="outline">
           Hire me
         </Button>
@@ -88,7 +88,7 @@ export default function Home() {
           <div className="flex gap-4 flex-wrap">
             <Ctas />
           </div>
-          <section className="space-y-4 font-bold text-accent-foreground">
+          <section className="space-y-4 font-bold text-accent-foreground prose">
             <Body />
           </section>
         </div>
