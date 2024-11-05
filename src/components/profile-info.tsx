@@ -13,10 +13,10 @@ export const ProfileInfo = () => {
       <div className="text-xs flex gap-1 items-center">
         <Mail width={14} />
         <a
-          href={`mailto:${profileCopyText.email}?subject=Hello from (Company Name)&body=Hi%20Julius,`}
+          href={`mailto:${profileCopyText.altEmail}?subject=Hello from (Company Name)&body=Hi%20Julius,`}
           className="text-muted-foreground text-wrap underline underline-offset-4"
         >
-          {profileCopyText.email}
+          {profileCopyText.altEmail}
         </a>
       </div>
     </div>
