@@ -18,9 +18,11 @@ export const projects: Array<Project> = [
     descriptions: [
       "SubHub is a subscription management platform that allows users to manage, track and cancel their subscriptions in one.",
       `It is a "world first" to streamline "subscription fatigue" by having the telco as the single payment method for all your streaming services.`,
+      "I have architected the front end web app from scratch using Next.js within an NX Monorepo.",
+      "I have been leading the front end development ever since.",
     ],
     cta: {
-      label: "Go to SubHub",
+      label: "Go to SubHub (geo-blocked outside Australia)",
       href: "https://subhub.com.au",
     },
   },
