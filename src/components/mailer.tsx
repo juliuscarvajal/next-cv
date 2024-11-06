@@ -5,26 +5,19 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
-import { profileCopyText } from "@/constants/profile";
-import template from "lodash/template";
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const templateSettings = require("lodash/templateSettings");
-templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+import {
+  bodyWithOtherInfo,
+  emailSubject,
+  mailTo,
+  profileCopyText,
+} from "@/constants/profile";
 
 export const Mailer = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const defaultSubject = "Hi, Julius! Let's work together";
-  const [subject, setSubject] = useState(defaultSubject);
+  const [subject, setSubject] = useState(emailSubject);
 
-  const bodyTemplate = template(
-    "Hi, Julius, {{nameTemplate}}{{phoneTemplate}} I'm interested in hiring you for my project. Looking forward to hearing from you."
-  );
-  const bodyWithOtherInfo = bodyTemplate({
-    nameTemplate: name ? `My name is ${name}. ` : undefined,
-    phoneTemplate: phone ? `My phone number is ${phone}. ` : undefined,
-  });
-  const [body, setBody] = useState(bodyWithOtherInfo);
+  const [, setBody] = useState(bodyWithOtherInfo({ name, phone }));
   return (
     <div className="space-y-6">
       <div className="space-y-2">
@@ -67,7 +60,7 @@ export const Mailer = () => {
           <Input
             id="subject"
             placeholder="Subject"
-            defaultValue={defaultSubject}
+            defaultValue={emailSubject}
             onChange={(e) => setSubject(e.target.value)}
           />
         </div>
@@ -81,12 +74,7 @@ export const Mailer = () => {
           <Textarea
             id="body"
             placeholder="Body"
-            value={bodyTemplate({
-              nameTemplate: name ? `My name is ${name}. ` : undefined,
-              phoneTemplate: phone
-                ? `My phone number is ${phone}. `
-                : undefined,
-            })}
+            value={bodyWithOtherInfo({ name, phone })}
             onChange={(e) => {
               setBody(e.target.value);
             }}
@@ -96,7 +84,7 @@ export const Mailer = () => {
       <div className="flex gap-2">
         <Button size="sm">
           <a
-            href={`mailto:${profileCopyText.altEmail}?subject=${subject}&body=${bodyWithOtherInfo}`}
+            href={mailTo({ subject, body: bodyWithOtherInfo({ name, phone }) })}
           >
             Open Mail App
           </a>
