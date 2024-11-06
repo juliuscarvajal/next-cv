@@ -31,8 +31,8 @@ export const metadata: Metadata = {
 const Footer = () => {
   return (
     <>
-      <footer className="row-start-3 p-4 text-xs font-bold flex flex-col items-center justify-center gap-6">
-        <div className="flex divide-x gap-4 flex-wrap">
+      <footer className="row-start-3 p-4 text-xs font-bold">
+        <div className="flex gap-2 md:gap-8 flex-wrap justify-center">
           <NavLink href="/projects">All Projects</NavLink>
           <NavLink href="/projects/commercial">Commercial</NavLink>
           <NavLink href="/projects/personal">Personal</NavLink>

@@ -1,6 +1,7 @@
 import { Mailer } from "@/components/mailer";
 import { NavLink } from "@/components/nav-link";
 import { ProjectHeader } from "@/components/projects-list";
+import { ServicesOffered } from "@/components/services-offered";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { AtSign, BriefcaseBusiness } from "lucide-react";
 
@@ -51,6 +52,9 @@ export default function Contact() {
             subtitle="I'm excited to hear from you. Please feel free to reach out to me
               anytime."
           />
+          <div className="flex gap-2 flex-wrap text-sm font-bold">
+            <ServicesOffered />
+          </div>
         </div>
         <EmailSection />
         <InfoSection />
