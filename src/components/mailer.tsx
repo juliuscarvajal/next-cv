@@ -5,12 +5,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
-import {
-  bodyWithOtherInfo,
-  emailSubject,
-  mailTo,
-  profileCopyText,
-} from "@/constants/profile";
+import { bodyWithOtherInfo, emailSubject, mailTo } from "@/constants/profile";
 
 export const Mailer = () => {
   const [name, setName] = useState("");
