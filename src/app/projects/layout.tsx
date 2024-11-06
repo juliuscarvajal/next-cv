@@ -12,6 +12,7 @@ export default function ProjectsLayout({
         <ProfileInfo />
       </div>
       <nav className="text-sm flex gap-4 items-center">
+        <NavLink href="/">Home</NavLink>
         <NavLink href="/projects/commercial">Commercial</NavLink>
         <NavLink href="/projects/personal">Personal</NavLink>
         <NavLink href="/projects/contact">Contact me</NavLink>

@@ -33,6 +33,7 @@ const Footer = () => {
     <>
       <footer className="row-start-3 p-4 text-xs font-bold">
         <div className="flex gap-2 md:gap-8 flex-wrap justify-center">
+          <NavLink href="/">Home</NavLink>
           <NavLink href="/projects">All Projects</NavLink>
           <NavLink href="/projects/commercial">Commercial</NavLink>
           <NavLink href="/projects/personal">Personal</NavLink>
