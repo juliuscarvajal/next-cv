@@ -1,28 +1,30 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { profileCopyText } from "@/constants/profile";
+import template from "lodash/template";
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const templateSettings = require("lodash/templateSettings");
+templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
 export const Mailer = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const defaultSubject = "Hi, Julius! Let's work together";
   const [subject, setSubject] = useState(defaultSubject);
-  const [body, setBody] = useState(
-    `Hi Julius,\n\nI'm interested in hiring you for my project.`
-  );
 
-  const bodyWithOtherInfo = useCallback(
-    (value: string) =>
-      `${value}.\n${name ? `\nMy name is ${name}.\n` : ""}${
-        phone ? `\nYou can reach me at ${phone}.\n` : ""
-      }\nLooking forward to hearing from you soon!`,
-    [name, phone]
+  const bodyTemplate = template(
+    "Hi, Julius, {{nameTemplate}}{{phoneTemplate}} I'm interested in hiring you for my project. Looking forward to hearing from you."
   );
+  const bodyWithOtherInfo = bodyTemplate({
+    nameTemplate: name ? `My name is ${name}. ` : undefined,
+    phoneTemplate: phone ? `My phone number is ${phone}. ` : undefined,
+  });
+  const [body, setBody] = useState(bodyWithOtherInfo);
   return (
     <div className="space-y-6">
       <div className="space-y-2">
@@ -79,17 +81,22 @@ export const Mailer = () => {
           <Textarea
             id="body"
             placeholder="Body"
-            value={bodyWithOtherInfo(body)}
-            onChange={(e) => setBody(e.target.value)}
+            value={bodyTemplate({
+              nameTemplate: name ? `My name is ${name}. ` : undefined,
+              phoneTemplate: phone
+                ? `My phone number is ${phone}. `
+                : undefined,
+            })}
+            onChange={(e) => {
+              setBody(e.target.value);
+            }}
           />
         </div>
       </div>
       <div className="flex gap-2">
         <Button size="sm">
           <a
-            href={`mailto:${
-              profileCopyText.altEmail
-            }?subject=${subject}&body=${bodyWithOtherInfo(body)}`}
+            href={`mailto:${profileCopyText.altEmail}?subject=${subject}&body=${bodyWithOtherInfo}`}
           >
             Open Mail App
           </a>
