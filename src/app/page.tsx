@@ -12,7 +12,8 @@ const pageCopyText = {
   },
   body: [
     `Hello, I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
-    `I'm passionate about building user interfaces and experiences that people love. I specialize in creating performant, responsive, and accessible websites using modern web technologies.`,
+    `Problem solver, creative thinker, and a team player. I can help you build your next project from front to back.`,
+    // `I'm passionate about building user interfaces and experiences that people love. I specialize in creating performant, responsive, and accessible websites using modern web technologies.`,
   ],
   cta: {
     label: "See my work",
