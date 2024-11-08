@@ -1,29 +1,29 @@
-import { ImageList, ImageListProps } from "@/components/image-list";
+import { ImageListSection } from "@/components/image-list-section";
+import { NavLink } from "@/components/nav-link";
 import { ProfilePicture } from "@/components/profile-picture";
+import { ServicesOffered } from "@/components/services-offered";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { companies } from "@/constants/companies";
 import { stacks } from "@/constants/stacks";
-import Link from "next/link";
 
 const pageCopyText = {
   header: {
     title: "Front End Web Developer",
-    subtitle: "or a Full Stack Engineer...",
+    subtitle: "or a Full Stack Engineer when needed",
   },
   body: [
-    `I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
-    `I'm passionate about building user interfaces and experiences that people love. I specialize in creating performant, responsive, and accessible websites using modern web technologies.`,
+    `Hello, I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
+    `Problem solver, creative thinker, and a team player. I can help you build your next project from front to back.`,
   ],
   cta: {
-    label: "Learn more",
+    label: "See my work",
   },
 };
 
 const Header = () => {
   return (
     <div className="space-y-2">
-      <h1 className="leading-none text-5xl font-[family-name:var(--font-archivo-black)]">
+      <h1 className="leading-none text-4xl md:text-5xl font-[family-name:var(--font-archivo-black)]">
         {pageCopyText.header.title}
       </h1>
       <h2 className="leading-tight text-sm text-muted-foreground font-[family-name:var(--font-geist-mono)]">
@@ -43,68 +43,66 @@ const Body = () => {
   );
 };
 
-type ImageListSectionProps = ImageListProps & {
-  title: string;
+const Ctas = () => {
+  return (
+    <>
+      <NavLink href="/projects/commercial" className="w-full sm:w-auto">
+        <Button className="w-full">{pageCopyText.cta.label}</Button>
+      </NavLink>
+      <NavLink href="/projects/contact" className="w-full sm:w-auto">
+        <Button className="w-full" variant="secondary">
+          Hire me
+        </Button>
+      </NavLink>
+    </>
+  );
 };
 
-const ImageListSection = ({
-  images,
-  width,
-  height,
-  title,
-}: ImageListSectionProps) => {
+const Aside = () => {
   return (
-    <Card className="bg-accent">
-      <CardHeader>
-        <h1 className="text-sm font-bold text-muted-foreground">{title}</h1>
-      </CardHeader>
-      <CardContent>
-        <div className="flex flex-wrap gap-4 items-center">
-          <ImageList images={images} width={width} height={height} />
-          <div className="text-sm font-bold text-muted-foreground">
-            <Link
-              href="https://www.linkedin.com/in/juliuscarvajal"
-              target="_blank"
-              className="underline underline-offset-4"
-            >
-              + more
-            </Link>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+    <>
+      <ImageListSection
+        title="Clients"
+        images={companies}
+        width={64}
+        height={64}
+      />
+      <ImageListSection
+        title="Tech stack"
+        images={stacks}
+        width={48}
+        height={48}
+      />
+    </>
   );
 };
 
 export default function Home() {
   return (
     <>
-      <div className="flex flex-wrap lg:flex-nowrap gap-16 2xl:gap-16 w-full justify-around items-center">
-        <div className="space-y-8 max-w-md">
-          <section className="space-y-6">
-            <ProfilePicture />
-            <Header />
-          </section>
-          <Link href="/projects" className="block">
-            <Button>{pageCopyText.cta.label}</Button>
-          </Link>
-          <section className="space-y-4">
-            <Body />
-          </section>
-        </div>
-        <div className="space-y-8">
-          <ImageListSection
-            title="Clients"
-            images={companies}
-            width={64}
-            height={64}
-          />
-          <ImageListSection
-            title="Tech stack"
-            images={stacks}
-            width={48}
-            height={48}
-          />
+      <div className="space-y-8">
+        <div className="flex flex-wrap lg:flex-nowrap gap-16 w-full justify-around items-center">
+          <div className="space-y-8 w-full lg:max-w-md">
+            <section className="space-y-6">
+              <ProfilePicture />
+              <Header />
+            </section>
+            <div className="flex gap-4 flex-wrap">
+              <Ctas />
+            </div>
+            <section className="space-y-4 text-accent-foreground prose">
+              <Body />
+            </section>
+            <div className="space-y-4 w-full">
+              <h1 className="font-bold text-xl">Services</h1>
+              <div className="flex gap-2 flex-wrap text-sm font-bold">
+                <ServicesOffered />
+              </div>
+            </div>
+          </div>
+          <div className="space-y-8 w-full lg:max-w-2xl">
+            <Aside />
+          </div>
         </div>
       </div>
     </>
