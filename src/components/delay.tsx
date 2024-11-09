@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   children: React.ReactNode;
   waitBeforeShow?: number;
+  placeholder?: React.ReactNode;
 };
 
-const Delay = ({ children, waitBeforeShow = 500 }: Props) => {
+const Delay = ({ children, waitBeforeShow = 200, placeholder }: Props) => {
   const [isShown, setIsShown] = useState(false);
 
   useEffect(() => {
@@ -17,7 +18,10 @@ const Delay = ({ children, waitBeforeShow = 500 }: Props) => {
     return () => clearTimeout(timer);
   }, [waitBeforeShow]);
 
-  return isShown ? children : null;
+  if (!isShown) {
+    return placeholder || null;
+  }
+  return children;
 };
 
 export default Delay;

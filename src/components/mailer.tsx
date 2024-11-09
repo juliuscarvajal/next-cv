@@ -76,7 +76,7 @@ export const Mailer = () => {
           />
         </div>
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 items-baseline flex-wrap">
         <Button size="sm">
           <a
             href={mailTo({ subject, body: bodyWithOtherInfo({ name, phone }) })}
@@ -84,6 +84,10 @@ export const Mailer = () => {
             Open Mail App
           </a>
         </Button>
+        <div className="text-xs text-muted-foreground">
+          Note: Your email client will open with the subject and body pre-filled
+          for you.
+        </div>
       </div>
     </div>
   );

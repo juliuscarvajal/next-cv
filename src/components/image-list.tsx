@@ -1,5 +1,6 @@
-import Image, { ImageProps } from "next/image";
+import { ImageProps } from "next/image";
 import Delay from "./delay";
+import { ImageWithFallback } from "./image-with-fallback";
 
 // export type ImageListProps = Partial<ImgHTMLAttributes<HTMLImageElement>> & {
 //   images: Array<ImgHTMLAttributes<HTMLImageElement>>;
@@ -28,8 +29,23 @@ export const ImageList = (props: ImageListProps) => {
               key={imgAlt}
               className={`max-h-[${height}px] w-auto relative flex flex-col items-center gap-2 h-full`}
             >
-              <Delay>
-                <Image
+              <Delay
+                placeholder={
+                  <div className="flex flex-col items-center gap-2">
+                    <div
+                      className="w-[100%] h-[100%] bg-gray-200 animate-pulse"
+                      style={{
+                        width: `${width}px`,
+                        height: `${height}px`,
+                      }}
+                    />
+                    <div className="text-xs text-muted-foreground font-bold text-center text-wrap">
+                      {imgAlt}
+                    </div>
+                  </div>
+                }
+              >
+                <ImageWithFallback
                   width={width}
                   height={height}
                   alt={imgAlt}
