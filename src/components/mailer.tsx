@@ -74,7 +74,7 @@ const InputField = ({
       input={
         <Input
           id={id}
-          className={`${canCopy ? "pr-8" : ""}`}
+          className={`text-md ${canCopy ? "pr-8" : ""}`}
           value={value}
           {...inputProps}
         />
@@ -101,7 +101,7 @@ const TextareaField = ({
       input={
         <Textarea
           id={id}
-          className={`${canCopy ? "pr-8" : ""}`}
+          className={`text-md ${canCopy ? "pr-8" : ""}`}
           value={value}
           {...inputProps}
         />
@@ -188,9 +188,9 @@ export const Mailer = ({ className = "" }) => {
         <div className="flex justify-between items-center w-full flex-wrap">
           <div className="flex gap-2">
             {classicContactForm ? (
-              <Button size="sm">Send Email</Button>
+              <Button>Send Email</Button>
             ) : (
-              <Button size="sm">
+              <Button>
                 <a
                   href={mailTo({
                     subject,
