@@ -12,12 +12,22 @@ export const profileCopyText = {
 };
 
 type MailToProps = {
-  subject: string;
-  body: string;
+  email?: string;
+  subject?: string;
+  body?: string;
 };
 
-export const mailTo = ({ subject, body }: MailToProps) =>
-  `mailto:${profileCopyText.altEmail}?subject=${subject}&body=${body}`;
+export const emailSubject = "Hi, Julius! Let's work together";
+export const emailBody =
+  "I'm interested in hiring you for my project. Looking forward to hearing from you.";
+
+export const mailTo = ({
+  email = profileCopyText.altEmail,
+  subject = emailSubject,
+  body = emailBody,
+}: MailToProps = {}) => {
+  return `mailto:${email}?subject=${subject}&body=${body}`;
+};
 
 const bodyTemplate = template(
   "Hi, Julius, {{nameTemplate}}{{phoneTemplate}}{{servicesTemplate}} I'm interested in hiring you for my project. Looking forward to hearing from you."
@@ -28,10 +38,6 @@ type BodyWithOtherInfoProps = {
   phone?: string;
   services?: string[];
 };
-
-export const emailSubject = "Hi, Julius! Let's work together";
-export const emailBody =
-  "I'm interested in hiring you for my project. Looking forward to hearing from you.";
 
 function joinWithAnd(arr?: string[]) {
   if (!arr) {

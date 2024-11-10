@@ -1,10 +1,6 @@
-import {
-  emailBody,
-  emailSubject,
-  mailTo,
-  profileCopyText,
-} from "@/constants/profile";
+import { mailTo, profileCopyText } from "@/constants/profile";
 import { Mail } from "lucide-react";
+import { NavLink } from "./nav-link";
 
 export const ProfileInfo = () => {
   return (
@@ -17,12 +13,9 @@ export const ProfileInfo = () => {
       </div>
       <div className="text-xs flex gap-1 items-center">
         <Mail width={14} />
-        <a
-          href={mailTo({ subject: emailSubject, body: emailBody })}
-          className="text-muted-foreground text-wrap underline underline-offset-4"
-        >
+        <NavLink href={mailTo()} className="text-muted-foreground text-wrap">
           {profileCopyText.altEmail}
-        </a>
+        </NavLink>
       </div>
     </div>
   );
