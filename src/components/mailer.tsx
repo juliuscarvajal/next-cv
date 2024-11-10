@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Input } from "./ui/input";
+import React, { useState } from "react";
+import { Input, InputProps } from "./ui/input";
 import { Button } from "./ui/button";
-import { Textarea } from "./ui/textarea";
+import { Textarea, TextareaProps } from "./ui/textarea";
 import { Label } from "./ui/label";
 import {
   bodyWithOtherInfo,
@@ -15,8 +15,102 @@ import { ServicesOffered } from "./services-offered";
 import uniq from "lodash/uniq";
 import { Toggle } from "./ui/toggle";
 import { CopyToClipboard } from "./copy-to-clipboard";
+import { NavLink } from "./nav-link";
 
-export const Mailer = () => {
+type CommonInputFieldProps = {
+  label?: React.ReactNode;
+  id: string;
+  placeholder?: string;
+  canCopy?: boolean;
+  value?: string;
+  className?: string;
+  input?: React.ReactNode;
+};
+
+type InputFieldProps = CommonInputFieldProps & InputProps;
+type TextAreaFieldProps = CommonInputFieldProps & TextareaProps;
+
+const CommonInputField = ({
+  input,
+  className = "",
+  id,
+  label,
+  canCopy,
+  value,
+}: CommonInputFieldProps) => {
+  return (
+    <div className={`${className}`}>
+      <Label htmlFor={id} className="font-bold text-xs text-muted-foreground">
+        {label}
+      </Label>
+      <div className="relative">
+        {input}
+        {canCopy && (
+          <CopyToClipboard
+            className="absolute top-2 right-2"
+            text={value as string}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+const InputField = ({
+  label,
+  id,
+  className = "",
+  canCopy,
+  value,
+  ...inputProps
+}: InputFieldProps) => {
+  return (
+    <CommonInputField
+      label={label}
+      id={id}
+      className={className}
+      canCopy={canCopy}
+      value={value}
+      input={
+        <Input
+          id={id}
+          className={`${canCopy ? "pr-8" : ""}`}
+          value={value}
+          {...inputProps}
+        />
+      }
+    />
+  );
+};
+
+const TextareaField = ({
+  label,
+  id,
+  className = "",
+  canCopy,
+  value,
+  ...inputProps
+}: TextAreaFieldProps) => {
+  return (
+    <CommonInputField
+      label={label}
+      id={id}
+      className={className}
+      canCopy={canCopy}
+      value={value}
+      input={
+        <Textarea
+          id={id}
+          className={`${canCopy ? "pr-8" : ""}`}
+          value={value}
+          {...inputProps}
+        />
+      }
+    />
+  );
+};
+
+export const Mailer = ({ className = "" }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -26,103 +120,58 @@ export const Mailer = () => {
   const [, setBody] = useState(bodyWithOtherInfo({ name, phone, services }));
 
   return (
-    <div className="space-y-6">
+    <div className={`space-y-6 ${className}`}>
       <div className="space-y-4">
         <div className="flex gap-2">
-          <div className="w-full">
-            <Label
-              className="font-bold text-xs text-muted-foreground"
-              htmlFor="name"
-            >
-              Your name
-            </Label>
-            <Input
-              id="name"
-              placeholder="Your name"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="w-full">
-            <Label
-              className="font-bold text-xs text-muted-foreground"
-              htmlFor="phone"
-            >
-              Phone
-            </Label>
-            <Input
-              id="phone"
-              placeholder="Mobile number"
-              type="tel"
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </div>
+          <InputField
+            className="w-full"
+            id="name"
+            label="Your name"
+            placeholder="Your name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <InputField
+            className="w-full"
+            id="phone"
+            label="Phone"
+            placeholder="Mobile number"
+            type="tel"
+            onChange={(e) => setPhone(e.target.value)}
+          />
         </div>
-        <div>
-          <Label
-            className="font-bold text-xs text-muted-foreground"
-            htmlFor="subject"
-          >
-            Subject
-          </Label>
-          <div className="relative">
-            <Input
-              id="subject"
-              placeholder="Subject"
-              className="pr-8"
-              defaultValue={emailSubject}
-              onChange={(e) => setSubject(e.target.value)}
-            />
-            <CopyToClipboard
-              className="absolute top-2 right-2"
-              text={emailSubject}
-            />
-          </div>
-        </div>
-        <div>
-          <Label
-            className="font-bold text-xs text-muted-foreground"
-            htmlFor="body"
-          >
-            Body
-          </Label>
-          <div className="relative">
-            <Textarea
-              id="body"
-              placeholder="Body"
-              className="pr-8"
-              value={bodyWithOtherInfo({ name, phone, services })}
-              onChange={(e) => {
-                setBody(e.target.value);
-              }}
-            />
-            <CopyToClipboard
-              className="absolute top-2 right-2"
-              text={bodyWithOtherInfo({ name, phone, services })}
-            />
-          </div>
-        </div>
+        <InputField
+          id="subject"
+          label="Subject"
+          placeholder="Subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          canCopy
+        />
+        <TextareaField
+          id="body"
+          label="Body"
+          placeholder="Body"
+          value={bodyWithOtherInfo({ name, phone, services })}
+          onChange={(e) => {
+            setBody(e.target.value);
+          }}
+          canCopy
+        />
         {classicContactForm && (
-          <div className="w-full">
-            <Label
-              className="font-bold text-xs text-muted-foreground"
-              htmlFor="email"
-            >
-              Your Email
-            </Label>
-            <Input
-              id="email"
-              placeholder="Your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          <InputField
+            id="email"
+            label="Your Email"
+            placeholder="Your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         )}
         <div>
           <ServicesOffered
             batchLimit={3}
+            size="xs"
             onSelect={(service) => {
               const updatedServices = uniq([...services, service]);
-              console.log(updatedServices);
               setServices(updatedServices);
               setBody(
                 bodyWithOtherInfo({
@@ -154,35 +203,26 @@ export const Mailer = () => {
             )}
           </div>
         </div>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 flex-wrap text-xs text-muted-foreground">
           <Label
             htmlFor="classic-contact-form"
-            className="cursor-pointer text-xs text-muted-foreground"
+            className="text-xs cursor-pointer underline underline-offset-4 text-muted-foreground"
           >
-            {classicContactForm ? (
-              <div className="space-y-2">
-                <p className="underline underline-offset-4">
-                  Tap here to use your mail app instead.
-                </p>
-                <p>
-                  Using your mail app enables you to edit the email body before
-                  sending.
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-2">
-                <p className="underline underline-offset-4">
-                  No mail app? Tap here to use classic contact form instead.
-                </p>
-                <p>
-                  Or manually open your mail app and send to:{" "}
-                  <a className="underline underline-offset-4">
-                    {profileCopyText?.altEmail}
-                  </a>
-                </p>
-              </div>
-            )}
+            {classicContactForm
+              ? "Tap here to use your mail app instead."
+              : "No mail app? Tap here to use classic contact form instead."}
           </Label>
+          <p>
+            {classicContactForm ? (
+              "Using your mail app enables you to edit the email body before sending."
+            ) : (
+              <span className="flex gap-1">
+                Or manually open your mail app and send to:
+                <NavLink href={mailTo()}>{profileCopyText?.altEmail}</NavLink>
+                <CopyToClipboard text={profileCopyText.altEmail} />
+              </span>
+            )}
+          </p>
           <Toggle
             id="classic-contact-form"
             className="hidden"

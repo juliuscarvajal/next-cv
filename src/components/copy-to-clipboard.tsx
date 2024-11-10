@@ -16,7 +16,7 @@ export const CopyToClipboard = ({ text = "", className = "" }) => {
     <ClipBoardComponent
       width={16}
       height={16}
-      className={`${className} ${
+      className={`${className} inline ${
         copied ? "text-green-500" : "text-stone-500"
       } cursor-pointer`}
       onClick={() => {

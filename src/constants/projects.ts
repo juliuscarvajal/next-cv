@@ -123,6 +123,16 @@ export const projects: Array<Project> = [
 
 export const personalProjects: Array<Project> = [
   {
+    name: "CV",
+    title: "My CV",
+    subtitle: "This personal portfolio site",
+    descriptions: [
+      "Been in the industry for over 20 years and I have worked with many companies and industries.",
+      "However this is the first time I have seriously designed and built my own personal portfolio site.",
+      "I also needed a reason to try out shadcn, Next.js App Router layouts and other stuff.",
+    ],
+  },
+  {
     name: "Lottie",
     title: "Lottie Shop",
     subtitle: "Shop for Lottie animations",

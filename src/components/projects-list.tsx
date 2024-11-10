@@ -5,6 +5,8 @@ import { companies } from "@/constants/companies";
 import { Project } from "@/constants/projects";
 import Image from "next/image";
 import { Fragment } from "react";
+import { Mailer } from "./mailer";
+import { PopupModal } from "./popup-modal";
 
 function getCompanyByProjectName(name: Project["name"]) {
   return companies.find((company) => company.name === name);
@@ -79,11 +81,14 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
           {project.cta?.label}
         </NavLink>
       )}
-      <div className="pt-4 flex gap-4">
-        <NavLink href="/projects/contact" className="w-full sm:w-auto">
-          <Button className="w-full font-bold">{`Let's Talk`}</Button>
-        </NavLink>
-      </div>
+      <PopupModal
+        trigger={
+          <Button className="w-full md:w-auto font-bold">{`Let's Talk`}</Button>
+        }
+        title="Contact me"
+      >
+        <Mailer />
+      </PopupModal>
     </div>
   );
 };

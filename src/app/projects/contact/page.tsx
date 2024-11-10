@@ -2,7 +2,7 @@ import { Mailer } from "@/components/mailer";
 import { NavLink } from "@/components/nav-link";
 import { ProjectHeader } from "@/components/projects-list";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { profileCopyText } from "@/constants/profile";
+import { mailTo, profileCopyText } from "@/constants/profile";
 import { BriefcaseBusiness, Linkedin, Mail } from "lucide-react";
 
 const EmailSection = () => {
@@ -33,9 +33,7 @@ const InfoSection = () => {
         </p>
         <p className="flex gap-2 items-center">
           <Mail />
-          <NavLink href="https://www.linkedin.com/in/juliuscarvajal">
-            {profileCopyText.altEmail}
-          </NavLink>
+          <NavLink href={mailTo()}>{profileCopyText.altEmail}</NavLink>
         </p>
         <p className="flex gap-2 items-center">
           <BriefcaseBusiness />
