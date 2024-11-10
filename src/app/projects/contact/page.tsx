@@ -1,9 +1,9 @@
 import { Mailer } from "@/components/mailer";
 import { NavLink } from "@/components/nav-link";
 import { ProjectHeader } from "@/components/projects-list";
-import { ServicesOffered } from "@/components/services-offered";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { AtSign, BriefcaseBusiness } from "lucide-react";
+import { profileCopyText } from "@/constants/profile";
+import { BriefcaseBusiness, Linkedin, Mail } from "lucide-react";
 
 const EmailSection = () => {
   return (
@@ -26,9 +26,15 @@ const InfoSection = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="flex gap-2 items-center">
-          <AtSign />
+          <Linkedin />
           <NavLink href="https://www.linkedin.com/in/juliuscarvajal">
             LinkedIn
+          </NavLink>
+        </p>
+        <p className="flex gap-2 items-center">
+          <Mail />
+          <NavLink href="https://www.linkedin.com/in/juliuscarvajal">
+            {profileCopyText.altEmail}
           </NavLink>
         </p>
         <p className="flex gap-2 items-center">
@@ -52,9 +58,6 @@ export default function Contact() {
             subtitle="I'm excited to hear from you. Please feel free to reach out to me
               anytime."
           />
-          <div className="flex gap-2 flex-wrap text-sm font-bold">
-            <ServicesOffered />
-          </div>
         </div>
         <EmailSection />
         <InfoSection />
