@@ -8,46 +8,70 @@ import {
   CollapsibleTrigger,
 } from "./ui/collapsible";
 import { useState } from "react";
+import { Button } from "./ui/button";
 
-export const ServicesOffered = () => {
+type ServicesOfferedProps = {
+  batchLimit?: number;
+  expandText?: string;
+  collapseText?: string;
+  onSelect?: (service: string) => void;
+};
+
+export const ServicesOffered = ({
+  batchLimit = 5,
+  expandText = "",
+  collapseText = "Show less",
+  onSelect,
+}: ServicesOfferedProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const batchLimit = 4;
   const firstBatch = servicesOffered.slice(0, batchLimit);
   const secondBatch = servicesOffered.slice(batchLimit);
-  const commonBadgeStyle = "px-3 py-1";
-  const badgeStyle = `${commonBadgeStyle} bg-gradient-to-r from-stone-200 to-stone-50 dark:from-stone-400 dark:to-stone-50`;
-  const badgeStyleExpand = `${commonBadgeStyle}`;
+  const commonBadgeStyle = "";
+  const badgeStyle = `${commonBadgeStyle} ${
+    onSelect ? "cursor-pointer" : ""
+  } font-bold text-black bg-gradient-to-r from-stone-200 to-stone-50 dark:from-stone-400 dark:to-stone-50`;
+  const expandStyle = `text-xs block p-0`;
   return (
-    <Collapsible
-      className="flex gap-2 flex-wrap"
-      open={isOpen}
-      onOpenChange={setIsOpen}
-    >
-      {firstBatch.map((service) => {
-        return (
-          <Badge key={service} variant="outline" className={badgeStyle}>
-            {service}
-          </Badge>
-        );
-      })}
-      {!isOpen && (
-        <CollapsibleTrigger>
-          <Badge className={badgeStyleExpand}>
-            {secondBatch.length} more services
-          </Badge>
-        </CollapsibleTrigger>
-      )}
-      <CollapsibleContent className="flex gap-2 flex-wrap">
-        {secondBatch.map((service) => {
+    <Collapsible className="space-y-2" open={isOpen} onOpenChange={setIsOpen}>
+      <div className="flex gap-2 flex-wrap">
+        {firstBatch.map((service) => {
           return (
-            <Badge key={service} variant="outline" className={badgeStyle}>
+            <Badge
+              key={service}
+              className={badgeStyle}
+              onClick={() => onSelect?.(service)}
+            >
               {service}
             </Badge>
           );
         })}
+      </div>
+      {!isOpen && secondBatch?.length > 0 && (
+        <CollapsibleTrigger asChild>
+          <Button className={expandStyle} size="sm" variant="link">
+            {expandText || `+ ${secondBatch?.length} more`}
+          </Button>
+        </CollapsibleTrigger>
+      )}
+      <CollapsibleContent className="space-y-2">
+        <div className="flex gap-2 flex-wrap">
+          {secondBatch.map((service) => {
+            return (
+              <Badge
+                key={service}
+                className={badgeStyle}
+                onClick={() => onSelect?.(service)}
+              >
+                {service}
+              </Badge>
+            );
+          })}
+        </div>
         {isOpen && (
-          <CollapsibleTrigger>
-            <Badge className={badgeStyleExpand}>Show less</Badge>
+          <CollapsibleTrigger asChild>
+            <Button className={expandStyle} size="sm" variant="link">
+              {collapseText}
+            </Button>
           </CollapsibleTrigger>
         )}
       </CollapsibleContent>
