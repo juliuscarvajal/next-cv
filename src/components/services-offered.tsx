@@ -2,11 +2,6 @@
 
 import { servicesOffered } from "@/constants/servicesOffered";
 import { Badge } from "./ui/badge";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "./ui/collapsible";
 import { useState } from "react";
 import { Button } from "./ui/button";
 
