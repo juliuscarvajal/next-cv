@@ -5,6 +5,8 @@ import { DarkModeToggle } from "@/components/dark-mode-toggle";
 import { BackNav } from "@/components/back-nav";
 import { TimeNow } from "@/components/time-now";
 import { NavLink } from "@/components/nav-link";
+import { servicesOffered } from "@/constants/servicesOffered";
+import { profileCopyText } from "@/constants/profile";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,8 +26,9 @@ const archivoBlack = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Julius Carvajal's CV",
-  description: "Julius Carvajal's CV",
+  title: `${profileCopyText.header.title} ${profileCopyText.header.subtitle}`,
+  description: profileCopyText.body.join(" "),
+  keywords: servicesOffered,
 };
 
 const Footer = () => {

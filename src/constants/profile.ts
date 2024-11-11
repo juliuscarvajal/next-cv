@@ -9,6 +9,14 @@ export const profileCopyText = {
   title: "Front End Web / Full Stack Developer",
   email: "juliuscarvajal21.com",
   altEmail: "hi@webarchi.tech",
+  header: {
+    title: "Front End Web Developer",
+    subtitle: "or a Full Stack Engineer when needed",
+  },
+  body: [
+    `Hello, I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
+    `Problem solver, creative thinker, and a team player. I can help you build your next project from front to back.`,
+  ],
 };
 
 type MailToProps = {

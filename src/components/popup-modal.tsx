@@ -3,6 +3,7 @@
 import {
   Drawer,
   DrawerContent,
+  DrawerContentProps,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -15,7 +16,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import { cn } from "@/lib/utils";
 
 type ProjectModalProps = {
   trigger: React.ReactNode;
@@ -33,17 +33,31 @@ export const PopupModal = ({
   const isMobile = useIsMobile();
   const Popup = isMobile ? Drawer : Dialog;
   const PopupTrigger = isMobile ? DrawerTrigger : DialogTrigger;
-  const PopupContent = isMobile ? DrawerContent : DialogContent;
+  const PopupContent = isMobile
+    ? ({ children: drawerContentChildren, ...props }: DrawerContentProps) => (
+        <DrawerContent {...props}>
+          <div className="overflow-y-auto">{drawerContentChildren}</div>
+        </DrawerContent>
+      )
+    : ({
+        children: dialogContentChildren,
+        className = "",
+        ...props
+      }: DrawerContentProps) => (
+        <DialogContent className={`overflow-y-auto ${className}`} {...props}>
+          <div>{dialogContentChildren}</div>
+        </DialogContent>
+      );
   const PopupHeader = isMobile ? DrawerHeader : DialogHeader;
   const PopupTitle = isMobile ? DrawerTitle : DialogTitle;
   return (
     <Popup>
       <PopupTrigger asChild>{trigger}</PopupTrigger>
-      <PopupContent className={cn("px-8 pb-8", className)}>
+      <PopupContent className={`max-h-[90%] ${className}`}>
         <PopupHeader>
           <PopupTitle>{title}</PopupTitle>
         </PopupHeader>
-        {children}
+        <div className={`${isMobile ? "p-4" : ""}`}>{children}</div>
       </PopupContent>
     </Popup>
   );
