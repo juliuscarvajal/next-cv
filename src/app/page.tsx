@@ -4,17 +4,12 @@ import { ProfilePicture } from "@/components/profile-picture";
 import { ServicesOffered } from "@/components/services-offered";
 import { Button } from "@/components/ui/button";
 import { companies } from "@/constants/companies";
+import { profileCopyText } from "@/constants/profile";
 import { stacks } from "@/constants/stacks";
 
 const pageCopyText = {
-  header: {
-    title: "Front End Web Developer",
-    subtitle: "or a Full Stack Engineer when needed",
-  },
-  body: [
-    `Hello, I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
-    `Problem solver, creative thinker, and a team player. I can help you build your next project from front to back.`,
-  ],
+  header: profileCopyText.header,
+  body: profileCopyText.body,
   cta: {
     label: "See my work",
   },
