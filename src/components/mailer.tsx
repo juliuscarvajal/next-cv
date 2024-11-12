@@ -217,7 +217,7 @@ export const Mailer = ({ className = "" }) => {
               "Using your mail app enables you to edit the email body before sending."
             ) : (
               <span className="flex gap-1">
-                Or manually open your mail app and send to:
+                <span>Or manually open your mail app and send to:</span>
                 <NavLink href={mailTo()}>{profileCopyText?.altEmail}</NavLink>
                 <CopyToClipboard text={profileCopyText.altEmail} />
               </span>
