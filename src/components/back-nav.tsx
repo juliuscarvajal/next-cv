@@ -9,7 +9,7 @@ export const BackNav = ({ className = "" }) => {
   const router = useRouter();
   const pathname = usePathname();
   if (pathname === "/") {
-    return <div></div>; // NOTE: Placholder so that the other components won't shift
+    return <div />; // NOTE: Placholder so that the other components won't shift
   }
   const onClick = () => {
     if (pathname.startsWith("/projects")) {
