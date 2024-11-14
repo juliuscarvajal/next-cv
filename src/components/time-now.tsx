@@ -1,36 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { getLocaleTimeString } from "@/lib/getLocaleTimeString";
+import { getCurrentTimezone } from "@/lib/getCurrentTimezone";
+import { useTimeInterval } from "@/lib/useTimeInterval";
 
-function useTimeInterval() {
-  const [time, setTime] = useState(new Date());
+type TimeNowProps = {
+  timezone?: string;
+  className?: string;
+  classes?: Record<"timezone" | "time", string>;
+};
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
-  return time;
-}
-
-export const TimeNow = () => {
+export const TimeNow = ({
+  timezone,
+  className = "",
+  classes,
+}: TimeNowProps) => {
   const time = useTimeInterval();
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const timezoneName = timezone || getCurrentTimezone();
   return (
-    <div className="flex flex-col items-end text-xs text-muted-foreground font-bold">
-      <div>{timezone}</div>
-      <div suppressHydrationWarning>
-        {time.toLocaleTimeString("en-US", {
-          hour: "numeric",
-          minute: "numeric",
-          second: "2-digit",
-          hour12: true,
-        })}
-      </div>
-    </div>
+    <span className={className}>
+      <span className={classes?.timezone || ""}>{timezoneName}</span>
+      <span suppressHydrationWarning className={classes?.time}>
+        {getLocaleTimeString(time, timezoneName)}
+      </span>
+    </span>
   );
 };

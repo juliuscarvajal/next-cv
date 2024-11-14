@@ -14,7 +14,7 @@ export const profileCopyText = {
     subtitle: "or a Full Stack Engineer when needed",
   },
   body: [
-    `Hello, I'm Julius Carvajal, a Front End Developer based in Sydney, Australia.`,
+    `Hello, I'm Julius Carvajal, a Front End Developer based in Sydney, Australia`,
     `Problem solver, creative thinker, and a team player. I can help you build your next project from front to back.`,
   ],
 };

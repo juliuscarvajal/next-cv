@@ -52,7 +52,7 @@ const Nav = () => {
     <div className="flex items-center justify-between w-full">
       <BackNav />
       <div className="flex gap-2 items-center">
-        <TimeNow />
+        <TimeNow className="flex flex-col items-end text-sm text-muted-foreground font-bold" />
         <DarkModeToggle className="justify-self-end" />
       </div>
     </div>
