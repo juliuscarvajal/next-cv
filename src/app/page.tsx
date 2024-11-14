@@ -2,7 +2,6 @@ import { ImageListSection } from "@/components/image-list-section";
 import { NavLink } from "@/components/nav-link";
 import { ProfilePicture } from "@/components/profile-picture";
 import { ServicesOffered } from "@/components/services-offered";
-import { TimeNow } from "@/components/time-now";
 import { Button } from "@/components/ui/button";
 import { companies } from "@/constants/companies";
 import { profileCopyText } from "@/constants/profile";

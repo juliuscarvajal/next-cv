@@ -3,13 +3,13 @@
 export default $config({
   app(input) {
     return {
-      name: "cv",
+      name: "juliuscarvajal-cv",
       removal: input?.stage === "production" ? "retain" : "remove",
       home: "aws",
     };
   },
   async run() {
-    new sst.aws.Nextjs("CV", {
+    new sst.aws.Nextjs("JuliusCarvajalCV", {
       domain: {
         name: "webarchi.tech",
         dns: false,

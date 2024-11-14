@@ -6,7 +6,7 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
-    "CV": {
+    "JuliusCarvajalCV": {
       "type": "sst.aws.Nextjs"
       "url": string
     }
