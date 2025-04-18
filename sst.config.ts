@@ -1,5 +1,8 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 
+const secret = new sst.Secret("SMTP_SERVER_PASSWORD");
+
+// TODO: CI/CD and .env in Github actions
 export default $config({
   app(input) {
     return {
@@ -15,6 +18,7 @@ export default $config({
         dns: false,
         cert: "arn:aws:acm:us-east-1:754883701401:certificate/232b566a-a9ad-44a1-b89f-2ee8c948ad10",
       },
+      link: [secret],
     });
   },
 });

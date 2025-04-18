@@ -16,6 +16,7 @@ import uniq from "lodash/uniq";
 import { Toggle } from "./ui/toggle";
 import { CopyToClipboard } from "./copy-to-clipboard";
 import { NavLink } from "./nav-link";
+import Form from "next/form";
 
 type CommonInputFieldProps = {
   label?: React.ReactNode;
@@ -116,7 +117,7 @@ export const Mailer = ({ className = "" }) => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState(emailSubject);
   const [services, setServices] = useState<Array<string>>([]);
-  const [classicContactForm, setClassicContactForm] = useState(false);
+  const [classicContactForm, setClassicContactForm] = useState(true);
   const [, setBody] = useState(bodyWithOtherInfo({ name, phone, services }));
 
   return (
@@ -128,6 +129,7 @@ export const Mailer = ({ className = "" }) => {
             id="name"
             label="Your name"
             placeholder="Your name"
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <InputField
@@ -136,6 +138,7 @@ export const Mailer = ({ className = "" }) => {
             label="Phone"
             placeholder="Mobile number"
             type="tel"
+            value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
         </div>
@@ -151,7 +154,7 @@ export const Mailer = ({ className = "" }) => {
           id="body"
           label="Body"
           placeholder="Body"
-          value={bodyWithOtherInfo({ name, phone, services })}
+          value={bodyWithOtherInfo({ name, phone, email, services })}
           onChange={(e) => {
             setBody(e.target.value);
           }}
@@ -163,6 +166,8 @@ export const Mailer = ({ className = "" }) => {
             label="Your Email"
             placeholder="Your email"
             value={email}
+            type="email"
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
         )}
@@ -177,6 +182,7 @@ export const Mailer = ({ className = "" }) => {
                 bodyWithOtherInfo({
                   name,
                   phone,
+                  email,
                   services: updatedServices,
                 })
               );
@@ -188,13 +194,18 @@ export const Mailer = ({ className = "" }) => {
         <div className="flex justify-between items-center w-full flex-wrap">
           <div className="flex gap-2">
             {classicContactForm ? (
-              <Button>Send Email</Button>
+              <Button
+                type="submit"
+                disabled={!subject || (classicContactForm && !email)}
+              >
+                Send Email
+              </Button>
             ) : (
               <Button>
                 <a
                   href={mailTo({
                     subject,
-                    body: bodyWithOtherInfo({ name, phone, services }),
+                    body: bodyWithOtherInfo({ name, phone, email, services }),
                   })}
                 >
                   Open Mail App
