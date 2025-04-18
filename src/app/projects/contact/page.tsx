@@ -1,3 +1,4 @@
+import { EmailForm } from "@/components/email-form";
 import { Mailer } from "@/components/mailer";
 import { NavLink } from "@/components/nav-link";
 import { ProjectHeader } from "@/components/projects-list";
@@ -12,7 +13,7 @@ const EmailSection = () => {
         <h1 className="text-xl font-bold">Email</h1>
       </CardHeader>
       <CardContent className="space-y-4">
-        <Mailer />
+        <EmailForm />
       </CardContent>
     </Card>
   );

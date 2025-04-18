@@ -7,7 +7,7 @@ templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 export const profileCopyText = {
   name: "Julius Carvajal",
   title: "Front End Web / Full Stack Developer",
-  email: "juliuscarvajal21.com",
+  email: "juliuscarvajal21@gmail.com",
   altEmail: "hi@webarchi.tech",
   header: {
     title: "Front End Web Developer",
@@ -38,12 +38,13 @@ export const mailTo = ({
 };
 
 const bodyTemplate = template(
-  "Hi, Julius, {{nameTemplate}}{{phoneTemplate}}{{servicesTemplate}} I'm interested in hiring you for my project. Looking forward to hearing from you."
+  "Hi, Julius, {{nameTemplate}}{{servicesTemplate}} I'm interested in hiring you for my project. {{phoneTemplate}}{{emailTemplate}} Looking forward to hearing from you."
 );
 
 type BodyWithOtherInfoProps = {
   name?: string;
   phone?: string;
+  email?: string;
   services?: string[];
 };
 
@@ -63,11 +64,13 @@ function joinWithAnd(arr?: string[]) {
 export const bodyWithOtherInfo = ({
   name,
   phone,
+  email,
   services,
 }: BodyWithOtherInfoProps) =>
   bodyTemplate({
     nameTemplate: name ? `My name is ${name}. ` : undefined,
     phoneTemplate: phone ? `My phone number is ${phone}. ` : undefined,
+    emailTemplate: email ? `My email is ${email}.` : undefined,
     servicesTemplate: !isEmpty(services)
       ? `I need help with ${joinWithAnd(services)}. `
       : undefined,
