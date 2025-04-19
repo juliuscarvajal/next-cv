@@ -5,9 +5,9 @@ import { companies } from "@/constants/companies";
 import { Project } from "@/constants/projects";
 import Image from "next/image";
 import { Fragment } from "react";
-import { Mailer } from "./mailer";
 import { PopupModal } from "./popup-modal";
 import { EmailForm } from "./email-form";
+import random from "lodash/random";
 
 function getCompanyByProjectName(name: Project["name"]) {
   return companies.find((company) => company.name === name);
@@ -88,7 +88,7 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
         }
         title="Contact me"
       >
-        <EmailForm />
+        <EmailForm key={random()} />
       </PopupModal>
     </div>
   );

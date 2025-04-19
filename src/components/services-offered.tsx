@@ -4,13 +4,15 @@ import { servicesOffered } from "@/constants/servicesOffered";
 import { Badge } from "./ui/badge";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import filter from "lodash/filter";
 
 type ServicesOfferedProps = {
   batchLimit?: number;
   expandText?: string;
   collapseText?: string;
-  onSelect?: (service: string) => void;
+  onSelect?: (service: string, unselectedServices?: Array<string>) => void;
   size?: "xs" | "sm" | "md" | "lg";
+  removeSelected?: boolean;
 };
 
 export const ServicesOffered = ({
@@ -19,20 +21,29 @@ export const ServicesOffered = ({
   collapseText = "Show less",
   size = "md",
   onSelect,
+  removeSelected = true,
 }: ServicesOfferedProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const firstBatch = servicesOffered.slice(0, batchLimit);
-  const secondBatch = servicesOffered.slice(batchLimit);
+  const [updatedServices, setUpdatedServices] = useState(servicesOffered);
+  const firstBatch = updatedServices.slice(0, batchLimit);
+  const secondBatch = updatedServices.slice(batchLimit);
   const sizeStyle = `text-${size}`;
   const badgeStyle = `${sizeStyle} ${onSelect ? "cursor-pointer" : ""}`;
   const expandStyle = `${sizeStyle} block px-3 py-0.5 h-auto`;
+  const onServiceSelected = (service: string) => () => {
+    const unselectedServices = filter(updatedServices, (s) => s !== service);
+    if (removeSelected) {
+      setUpdatedServices(unselectedServices);
+    }
+    onSelect?.(service, unselectedServices);
+  };
   return (
     <div className="flex gap-2 flex-wrap">
       {firstBatch.map((service) => {
         return (
           <Badge
             key={service}
-            onClick={() => onSelect?.(service)}
+            onClick={onServiceSelected(service)}
             className={badgeStyle}
           >
             {service}
@@ -55,7 +66,7 @@ export const ServicesOffered = ({
             return (
               <Badge
                 key={service}
-                onClick={() => onSelect?.(service)}
+                onClick={onServiceSelected(service)}
                 className={badgeStyle}
               >
                 {service}

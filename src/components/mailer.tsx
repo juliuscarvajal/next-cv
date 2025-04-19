@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ComponentPropsWithRef, useState } from "react";
 import { Input, InputProps } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea, TextareaProps } from "./ui/textarea";
@@ -16,6 +16,8 @@ import uniq from "lodash/uniq";
 import { Toggle } from "./ui/toggle";
 import { CopyToClipboard } from "./copy-to-clipboard";
 import { NavLink } from "./nav-link";
+import { BadgeCheckIcon } from "lucide-react";
+import { Captcha, useValidCaptchaAtom } from "./ui/captcha";
 
 type CommonInputFieldProps = {
   label?: React.ReactNode;
@@ -110,7 +112,16 @@ const TextareaField = ({
   );
 };
 
-export const Mailer = ({ className = "" }) => {
+interface MailerProps extends ComponentPropsWithRef<"div"> {
+  loading?: boolean;
+  state?: unknown;
+}
+
+export const Mailer = ({
+  className = "",
+  loading = false,
+  state,
+}: MailerProps) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -118,6 +129,7 @@ export const Mailer = ({ className = "" }) => {
   const [services, setServices] = useState<Array<string>>([]);
   const [classicContactForm, setClassicContactForm] = useState(true);
   const [, setBody] = useState(bodyWithOtherInfo({ name, phone, services }));
+  const [isValidCaptcha] = useValidCaptchaAtom();
 
   return (
     <div className={`space-y-6 ${className}`}>
@@ -190,15 +202,28 @@ export const Mailer = ({ className = "" }) => {
         </div>
       </div>
       <div className="space-y-4">
+        {!isValidCaptcha && !state && <Captcha />}
         <div className="flex justify-between items-center w-full flex-wrap">
           <div className="flex gap-2">
             {classicContactForm ? (
-              <Button
-                type="submit"
-                disabled={!subject || (classicContactForm && !email)}
-              >
-                Send Email
-              </Button>
+              <>
+                {state && (
+                  <>
+                    <BadgeCheckIcon />
+                    Email sent
+                  </>
+                )}
+                {isValidCaptcha && !state && (
+                  <Button
+                    type="submit"
+                    disabled={
+                      !subject || (classicContactForm && !email) || loading
+                    }
+                  >
+                    {loading ? "Sending..." : "Send email"}
+                  </Button>
+                )}
+              </>
             ) : (
               <Button>
                 <a
