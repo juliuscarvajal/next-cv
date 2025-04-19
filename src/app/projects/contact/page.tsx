@@ -1,5 +1,4 @@
 import { EmailForm } from "@/components/email-form";
-import { Mailer } from "@/components/mailer";
 import { NavLink } from "@/components/nav-link";
 import { ProjectHeader } from "@/components/projects-list";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";

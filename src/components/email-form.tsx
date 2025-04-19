@@ -6,7 +6,7 @@ import { formSubmit } from "@/actions/formSubmit";
 import Form from "next/form";
 
 export const EmailForm = () => {
-  const [state, formAction] = useActionState(
+  const [, formAction] = useActionState(
     (prevState: unknown, formData: FormData) => formSubmit(formData),
     null
   );
