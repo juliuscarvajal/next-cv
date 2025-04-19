@@ -16,7 +16,6 @@ import uniq from "lodash/uniq";
 import { Toggle } from "./ui/toggle";
 import { CopyToClipboard } from "./copy-to-clipboard";
 import { NavLink } from "./nav-link";
-import Form from "next/form";
 
 type CommonInputFieldProps = {
   label?: React.ReactNode;
