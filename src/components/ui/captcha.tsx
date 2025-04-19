@@ -5,6 +5,7 @@ const validCaptchaAtom = atom(false);
 
 export const useValidCaptchaAtom = () => useAtom(validCaptchaAtom);
 
+// TODO: Replace this with altcha: https://altcha.org/docs/website-integration/
 export const Captcha = () => {
   const [validCaptcha, setValidCaptha] = useAtom(validCaptchaAtom);
   if (validCaptcha) {
