@@ -202,7 +202,7 @@ export const Mailer = ({
         </div>
       </div>
       <div className="space-y-4">
-        {!isValidCaptcha && !state && <Captcha />}
+        {!state && <Captcha />}
         <div className="flex justify-between items-center w-full flex-wrap">
           <div className="flex gap-2">
             {classicContactForm ? (
@@ -213,12 +213,10 @@ export const Mailer = ({
                     Email sent
                   </>
                 )}
-                {isValidCaptcha && !state && (
+                {!state && (
                   <Button
                     type="submit"
-                    disabled={
-                      !subject || (classicContactForm && !email) || loading
-                    }
+                    disabled={!subject || !email || loading || !isValidCaptcha}
                   >
                     {loading ? "Sending..." : "Send email"}
                   </Button>
