@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { Mailer } from "./mailer";
 import { PopupModal } from "./popup-modal";
+import { EmailForm } from "./email-form";
 
 function getCompanyByProjectName(name: Project["name"]) {
   return companies.find((company) => company.name === name);
@@ -87,7 +88,7 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
         }
         title="Contact me"
       >
-        <Mailer />
+        <EmailForm />
       </PopupModal>
     </div>
   );
