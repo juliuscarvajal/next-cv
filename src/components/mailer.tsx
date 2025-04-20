@@ -201,8 +201,8 @@ export const Mailer = ({
           />
         </div>
       </div>
+      {!state && <Captcha />}
       <div className="space-y-4">
-        {!state && <Captcha />}
         <div className="flex justify-between items-center w-full flex-wrap">
           <div className="flex gap-2">
             {classicContactForm ? (
