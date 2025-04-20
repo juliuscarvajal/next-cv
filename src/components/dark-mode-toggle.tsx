@@ -15,6 +15,7 @@ export const DarkModeToggle = ({ className = "" }) => {
         setIsDarkMode(!isDarkMode);
         document.documentElement.classList.toggle("dark");
       }}
+      aria-label={isDarkMode ? "Toggle light mode" : "Toggle dark mode"}
     >
       {isDarkMode ? (
         <Sun width={48} height={48} />
