@@ -17,7 +17,7 @@ import { Toggle } from "./ui/toggle";
 import { CopyToClipboard } from "./copy-to-clipboard";
 import { NavLink } from "./nav-link";
 import { BadgeCheckIcon } from "lucide-react";
-import { Captcha, useValidCaptchaAtom } from "./ui/captcha";
+import { WithCaptcha } from "@/features/recaptcha/components/WithCaptcha";
 
 type CommonInputFieldProps = {
   label?: React.ReactNode;
@@ -114,7 +114,7 @@ const TextareaField = ({
 
 interface MailerProps extends ComponentPropsWithRef<"div"> {
   loading?: boolean;
-  state?: unknown;
+  state: { data?: string; error?: Error | undefined } | null;
 }
 
 export const Mailer = ({
@@ -129,7 +129,6 @@ export const Mailer = ({
   const [services, setServices] = useState<Array<string>>([]);
   const [classicContactForm, setClassicContactForm] = useState(true);
   const [, setBody] = useState(bodyWithOtherInfo({ name, phone, services }));
-  const [isValidCaptcha] = useValidCaptchaAtom();
 
   return (
     <div className={`space-y-6 ${className}`}>
@@ -201,25 +200,33 @@ export const Mailer = ({
           />
         </div>
       </div>
-      {!state && <Captcha />}
       <div className="space-y-4">
         <div className="flex justify-between items-center w-full flex-wrap">
           <div className="flex gap-2">
             {classicContactForm ? (
               <>
-                {state && (
+                {state?.data && (
                   <>
                     <BadgeCheckIcon />
                     Email sent
                   </>
                 )}
-                {!state && (
-                  <Button
-                    type="submit"
-                    disabled={!subject || !email || loading || !isValidCaptcha}
-                  >
-                    {loading ? "Sending..." : "Send email"}
-                  </Button>
+                {!state?.data && (
+                  <div className="space-y-2 text-center">
+                    <WithCaptcha>
+                      <Button
+                        type="submit"
+                        disabled={!subject || !email || loading}
+                      >
+                        {loading ? "Sending..." : "Send email"}
+                      </Button>
+                    </WithCaptcha>
+                    {!loading && state?.error ? (
+                      <div className="text-xs text-error">
+                        Failed to send email
+                      </div>
+                    ) : null}
+                  </div>
                 )}
               </>
             ) : (

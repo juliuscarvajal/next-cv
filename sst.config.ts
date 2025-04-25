@@ -11,15 +11,17 @@ export default $config({
     };
   },
   async run() {
-    const secret = new sst.Secret("SMTP_SERVER_PASSWORD");
+    const smtpServerPasswordSecret = new sst.Secret("SMTP_SERVER_PASSWORD");
+    const recaptchaSecret = new sst.Secret("RECAPTCHA_SECRET_KEY");
+    const link = [smtpServerPasswordSecret, recaptchaSecret];
+    const environment = {
+      NEXT_PUBLIC_RECAPTCHA_SITE_KEY:
+        "6LfD_R8rAAAAACWp6ph3mYW3bxoOQEg_EJfbrgHr",
+    };
 
     new sst.aws.Nextjs("JuliusCarvajalCV", {
-      // domain: {
-      //   name: "webarchi.tech",
-      //   dns: false,
-      //   cert: "arn:aws:acm:us-east-1:754883701401:certificate/232b566a-a9ad-44a1-b89f-2ee8c948ad10",
-      // },
-      link: [secret],
+      link,
+      environment,
     });
   },
 });
