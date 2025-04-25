@@ -1,28 +1,19 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState } from "react";
 import { Mailer } from "./mailer";
 import { formSubmit } from "@/actions/formSubmit";
 import Form from "next/form";
-import { useValidCaptchaAtom } from "./ui/captcha";
+import { getCaptchaToken } from "@/features/recaptcha/actions/getCaptchaToken";
 
 export const EmailForm = () => {
-  const [isValidCaptcha, setValidCaptha] = useValidCaptchaAtom();
   const [state, formAction, isPending] = useActionState(
-    (prevState: unknown, formData: FormData) => {
-      if (!isValidCaptcha) {
-        return null;
-      }
-      return formSubmit(formData);
+    async (prevState: unknown, formData: FormData) => {
+      const token = await getCaptchaToken();
+      return formSubmit(formData, token);
     },
     null
   );
-
-  useEffect(() => {
-    if (state) {
-      setValidCaptha(false);
-    }
-  }, [setValidCaptha, state]);
 
   return (
     <Form action={formAction}>
