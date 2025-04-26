@@ -26,7 +26,7 @@ export const DarkModeToggle = ({ className = "" }) => {
       document.documentElement.classList.remove(DARK_CLASS);
       disable();
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, enable, disable]);
 
   const onClick = useCallback(() => {
     toggle();
@@ -35,7 +35,7 @@ export const DarkModeToggle = ({ className = "" }) => {
     } else {
       document.documentElement.classList.add(DARK_CLASS);
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, toggle]);
 
   const isMounted = useWorkaroundIsMounted();
   if (!isMounted) {

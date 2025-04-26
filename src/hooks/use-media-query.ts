@@ -55,5 +55,5 @@ export function useMediaQuery(
     };
   }, [query]);
 
-  return matches;
+  return matches as boolean;
 }
