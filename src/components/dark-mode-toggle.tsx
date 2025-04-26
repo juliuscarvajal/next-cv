@@ -1,98 +1,53 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useState,
-  useLayoutEffect,
-  useRef,
-} from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
+import { useDarkMode } from "@/hooks/use-dark-mode";
 
-const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
+const DARK_CLASS = "dark";
+
+function useWorkaroundIsMounted() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  return mounted;
+}
 
 export const DarkModeToggle = ({ className = "" }) => {
-  const ref = useRef<MediaQueryList>();
-  const [isDarkMode, setIsDarkMode] = useState<boolean | undefined>(undefined);
+  const { isDarkMode, toggle, enable, disable } = useDarkMode();
 
-  // NOTE: Set the first time
-  useLayoutEffect(() => {
-    const mql = window.matchMedia(COLOR_SCHEME_QUERY);
-    if (isDarkMode !== mql.matches) {
-      console.log(`>>> useLayoutEffect:initial`, isDarkMode, mql.matches);
-      const darkmode = isDarkMode === undefined ? true : mql.matches;
-      console.log(`>>> set...`, darkmode);
-      setIsDarkMode(darkmode);
-      document.documentElement.classList.toggle("dark");
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add(DARK_CLASS);
+      enable();
+    } else {
+      document.documentElement.classList.remove(DARK_CLASS);
+      disable();
     }
-    ref.current = mql;
-    const onChange = () => {
-      console.log(
-        `>>> useLayoutEffect:onChange`,
-        isDarkMode,
-        ref?.current?.matches
-      );
-      if (isDarkMode !== ref?.current?.matches) {
-        setIsDarkMode(ref?.current?.matches);
-        document.documentElement.classList.toggle("dark");
-      }
-    };
-    ref?.current?.addEventListener("change", onChange);
-
-    return () => ref?.current?.removeEventListener("change", onChange);
   }, [isDarkMode]);
 
-  // useEffect(() => {
-  //   const mql = ref.current;
-  //   if (!mql) {
-  //     return;
-  //   }
-  //   const onChange = () => {
-  //     console.log(`>>> ref:onChange`, isDarkMode, mql.matches);
-  //     if (isDarkMode !== mql.matches) {
-  //       setIsDarkMode(mql.matches);
-  //       document.documentElement.classList.toggle("dark");
-  //     }
-  //   };
-  //   mql.addEventListener("change", onChange);
-  //   return () => mql.removeEventListener("change", onChange);
-  // });
+  const onClick = useCallback(() => {
+    toggle();
+    if (isDarkMode) {
+      document.documentElement.classList.remove(DARK_CLASS);
+    } else {
+      document.documentElement.classList.add(DARK_CLASS);
+    }
+  }, [isDarkMode]);
 
-  // useEffect(() => {
-  //   const mql = window.matchMedia(COLOR_SCHEME_QUERY);
-  //   const onChange = () => {
-  //     console.log(`>>> useEffect:onChange`, isDarkMode, mql.matches);
-  //     if (!isDarkMode && mql.matches) {
-  //       setIsDarkMode(mql.matches);
-  //       document.documentElement.classList.toggle("dark");
-  //     }
-  //   };
-  //   mql.addEventListener("change", onChange);
-  //   return () => mql.removeEventListener("change", onChange);
-  // }, [isDarkMode]);
+  const isMounted = useWorkaroundIsMounted();
+  if (!isMounted) {
+    return null; // NOTE: Avoid SSR issues
+  }
 
   return (
     <Button
       className={className}
       size="icon"
       variant="ghost"
-      onClick={() => {
-        // const mql = window.matchMedia(COLOR_SCHEME_QUERY);
-        // // const mql = ref.current;
-        // console.log(`>>> onClick`, isDarkMode, mql?.matches);
-        // if (!mql) {
-        //   return;
-        // }
-        // if (isDarkMode === mql.matches) {
-        //   // setIsDarkMode(!isDarkMode);
-        // document.documentElement.classList.toggle("dark");
-        // }
-        const mql = window.matchMedia(COLOR_SCHEME_QUERY);
-        if (isDarkMode === mql.matches) {
-          setIsDarkMode(!isDarkMode);
-        }
-      }}
+      onClick={onClick}
       aria-label={isDarkMode ? "Toggle light mode" : "Toggle dark mode"}
     >
       {isDarkMode ? (

@@ -15,12 +15,18 @@ export function useMediaQuery(
     initializeWithValue = true,
   }: UseMediaQueryOptions = {}
 ): boolean {
-  const [matches, setMatches] = useState<boolean>(() => {
-    if (initializeWithValue) {
-      return window.matchMedia(query).matches;
+  const [matches, setMatches] = useState<boolean | undefined>(
+    initializeWithValue ? undefined : defaultValue
+  );
+  useIsomorphicLayoutEffect(() => {
+    if (matches !== undefined) {
+      return;
     }
-    return defaultValue;
-  });
+    if (initializeWithValue) {
+      setMatches(window.matchMedia(query).matches);
+    }
+    setMatches(defaultValue);
+  }, [matches, initializeWithValue, defaultValue]);
 
   // Handles the change event of the media query.
   function handleChange() {

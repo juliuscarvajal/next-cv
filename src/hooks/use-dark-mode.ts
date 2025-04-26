@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocalStorage } from "./use-local-storage";
+import { useMediaQuery } from "./use-media-query";
 
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 const LOCAL_STORAGE_KEY = "usehooks-ts-dark-mode";
@@ -27,28 +28,10 @@ export function useDarkMode(options: DarkModeOptions = {}): DarkModeReturn {
     initializeWithValue = true,
   } = options;
 
-  const [isDarkOS, setDarkOS] = useState(false);
-    // () => {
-    // const mql = window.matchMedia(COLOR_SCHEME_QUERY);
-    // return mql.matches;
-    // const onChange = () => {
-    //   setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    // };
-    // mql.addEventListener("change", onChange);
-    // setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    // return () => mql.removeEventListener("change", onChange);
-//   }) 
-  useEffect(() => {
-    const mql = window.matchMedia(COLOR_SCHEME_QUERY);
-    if (mql.matches) {
-      setDarkOS(true);
-    }
-  }, [])
-
-//   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY, {
-//     initializeWithValue,
-//     defaultValue,
-//   });
+  const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY, {
+    initializeWithValue,
+    defaultValue,
+  });
   const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
     localStorageKey,
     defaultValue ?? isDarkOS ?? false,
