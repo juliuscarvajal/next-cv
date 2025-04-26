@@ -26,7 +26,8 @@ export const DarkModeToggle = ({ className = "" }) => {
       document.documentElement.classList.remove(DARK_CLASS);
       disable();
     }
-  }, [isDarkMode, enable, disable]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDarkMode]); // NOTE: Adding enable and disable in deps array will break initial dark mode initialisation
 
   const onClick = useCallback(() => {
     toggle();
