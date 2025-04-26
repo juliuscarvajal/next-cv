@@ -5,6 +5,18 @@
 
 declare module "sst" {
   export interface Resource {
+    "JuliusCarvajalCV": {
+      "type": "sst.aws.Nextjs"
+      "url": string
+    }
+    "RECAPTCHA_SECRET_KEY": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
+    "SMTP_SERVER_PASSWORD": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
   }
 }
 /// <reference path="sst-env.d.ts" />

@@ -18,6 +18,16 @@ export function useRecaptcha() {
         console.error(">>> Failed to load reCAPTCHA script");
       };
       document.head.appendChild(script);
+
+      const styles = `
+        .grecaptcha-badge {
+          visibility: hidden;
+        }
+      `;
+
+      const styleSheet = document.createElement("style");
+      styleSheet.textContent = styles;
+      document.head.appendChild(styleSheet);
     })();
   });
 }

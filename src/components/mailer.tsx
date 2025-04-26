@@ -212,7 +212,7 @@ export const Mailer = ({
                   </>
                 )}
                 {!state?.data && (
-                  <div className="space-y-2 text-center">
+                  <div className="space-y-2">
                     <WithCaptcha>
                       <Button
                         type="submit"
