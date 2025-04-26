@@ -1,20 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
+import { useDarkMode } from "@/hooks/use-dark-mode";
+
+const DARK_CLASS = "dark";
+
+function useWorkaroundIsMounted() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  return mounted;
+}
 
 export const DarkModeToggle = ({ className = "" }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggle, enable, disable } = useDarkMode();
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add(DARK_CLASS);
+      enable();
+    } else {
+      document.documentElement.classList.remove(DARK_CLASS);
+      disable();
+    }
+  }, [isDarkMode]);
+
+  const onClick = useCallback(() => {
+    toggle();
+    if (isDarkMode) {
+      document.documentElement.classList.remove(DARK_CLASS);
+    } else {
+      document.documentElement.classList.add(DARK_CLASS);
+    }
+  }, [isDarkMode]);
+
+  const isMounted = useWorkaroundIsMounted();
+  if (!isMounted) {
+    return null; // NOTE: Avoid SSR issues
+  }
+
   return (
     <Button
       className={className}
       size="icon"
       variant="ghost"
-      onClick={() => {
-        setIsDarkMode(!isDarkMode);
-        document.documentElement.classList.toggle("dark");
-      }}
+      onClick={onClick}
       aria-label={isDarkMode ? "Toggle light mode" : "Toggle dark mode"}
     >
       {isDarkMode ? (

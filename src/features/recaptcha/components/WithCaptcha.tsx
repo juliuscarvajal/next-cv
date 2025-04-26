@@ -8,7 +8,7 @@ type WithCaptchaProps = {
 
 const Disclaimer = () => {
   return (
-    <span className="font-medium text-xs text-muted-foreground">
+    <div className="font-medium text-xs text-muted-foreground">
       <span>This site is protected by reCAPTCHA and the Google</span>{" "}
       <a
         className="underline underline-offset-4"
@@ -24,7 +24,7 @@ const Disclaimer = () => {
         Terms of Service
       </a>{" "}
       apply.
-    </span>
+    </div>
   );
 };
 
