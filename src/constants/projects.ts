@@ -141,7 +141,7 @@ export const personalProjects: Array<Project> = [
     ],
     cta: {
       label: "Go to Lottie Files Shop",
-      href: "https://lottiefiles.shop",
+      href: "https://d2rjogd8qrbrqf.cloudfront.net/",
     },
   },
 ];
