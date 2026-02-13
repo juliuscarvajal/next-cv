@@ -19,7 +19,13 @@ export const BackNav = ({ className = "" }) => {
     router.back();
   };
   return (
-    <Button size="icon" variant="ghost" className={className} onClick={onClick}>
+    <Button
+      size="icon"
+      variant="ghost"
+      className={className}
+      onClick={onClick}
+      aria-label="Go back to previous page"
+    >
       <ChevronLeft width={48} height={48} />
     </Button>
   );

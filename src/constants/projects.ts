@@ -131,6 +131,10 @@ export const personalProjects: Array<Project> = [
       "However this is the first time I have seriously designed and built my own personal portfolio site.",
       "I also needed a reason to try out shadcn, Next.js App Router layouts and other stuff.",
     ],
+    cta: {
+      label: "Go to Home page",
+      href: "/",
+    },
   },
   {
     name: "Lottie",
