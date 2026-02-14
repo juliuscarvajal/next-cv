@@ -19,7 +19,7 @@ export const projects: Array<Project> = [
       "Optus has launched Optus Expert AI, a new agentic AI solution for frontline teams.",
       "Optus Expert AI is designed to ensure every AI-guided frontline action is faster, better and more streamlined customer experience.",
       "This solution has been developed on Google Cloud's Customer Engagement Suite using conversational AI solutions.",
-      "Implemented the browser popout POC with an iframe that resulted to solving existing limitation of UI visibility and potentially new CX ideas.",
+      "Implemented the browser popout POC using Document Picture-in-Picture with an iframe that resulted to solving existing limitation of UI visibility and potentially new CX ideas.",
     ],
   },
   {
@@ -36,6 +36,11 @@ export const projects: Array<Project> = [
       label: "Go to SubHub (geo-blocked outside Australia)",
       href: "https://subhub.com.au",
     },
+    images: [
+      "/projects/optus/subhub-add-activate.png",
+      "/projects/optus/subhub-add-modal.png",
+      "/projects/optus/subhub-add-modal.png",
+    ],
   },
   {
     name: "Optus",
