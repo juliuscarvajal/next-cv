@@ -18,7 +18,7 @@ type UseLocalStorageOptions<T> = {
   initializeWithValue?: boolean;
 };
 
-export function useLocalStorage<T = string>(
+export function useLocalStorage<T = string | undefined>(
   key: string,
   initialValue: T | (() => T),
   options: UseLocalStorageOptions<T> = {},
@@ -64,12 +64,12 @@ export function useLocalStorage<T = string>(
 
   // Get from local storage then
   // parse stored json or return initialValue
-  const readValue = useCallback((): T => {
+  const readValue = useCallback(() => {
     const initialValueToUse =
       initialValue instanceof Function ? initialValue() : initialValue;
 
     try {
-      const raw = window.localStorage.getItem(key);
+      const raw = localStorage?.getItem(key);
       return raw ? deserializer(raw) : initialValueToUse;
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error);
@@ -93,7 +93,7 @@ export function useLocalStorage<T = string>(
       const newValue = value instanceof Function ? value(readValue()) : value;
 
       // Save to local storage
-      window.localStorage.setItem(key, serializer(newValue));
+      localStorage.setItem(key, serializer(newValue));
 
       // Save state
       setStoredValue(newValue);
@@ -110,7 +110,7 @@ export function useLocalStorage<T = string>(
       initialValue instanceof Function ? initialValue() : initialValue;
 
     // Remove the key from local storage
-    window.localStorage.removeItem(key);
+    localStorage.removeItem(key);
 
     // Save state with default value
     setStoredValue(defaultValue);
