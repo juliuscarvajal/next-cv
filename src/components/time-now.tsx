@@ -21,10 +21,15 @@ export const TimeNow = ({
   const timezoneName = timezone || getCurrentTimezone();
   return (
     <span className={className}>
-      <span className={classes?.timezone || ""}>{timezoneName}</span>
+      <span className={cn("text-xs", classes?.timezone || "")}>
+        {timezoneName}
+      </span>
       <span
         suppressHydrationWarning
-        className={cn("flex gap-1", classes?.time)}
+        className={cn(
+          "w-full flex gap-x-1 flex-wrap justify-end",
+          classes?.time,
+        )}
       >
         <span>{getLocaleTimeString(time, timezoneName)}</span>
         <span>{getLocaleDateString(time, timezoneName)}</span>

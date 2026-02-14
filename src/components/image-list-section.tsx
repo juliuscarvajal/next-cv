@@ -18,7 +18,7 @@ export const ImageListSection = ({
       <CardHeader className="flex flex-row items-center justify-between">
         <h1 className="text-sm font-bold">{title}</h1>
         <div className="text-sm">
-          <NavLink href="/projects">+ more</NavLink>
+          <NavLink href="/projects/commercial">+ more</NavLink>
         </div>
       </CardHeader>
       <CardContent>

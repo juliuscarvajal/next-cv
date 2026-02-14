@@ -38,9 +38,9 @@ const Footer = () => {
         <div className="flex gap-2 md:gap-8 flex-wrap justify-center">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/projects">All Projects</NavLink>
-          <NavLink href="/projects/commercial">Commercial</NavLink>
+          <NavLink href="/projects/commercial">Work</NavLink>
           <NavLink href="/projects/personal">Personal</NavLink>
-          <NavLink href="/projects/contact">Contact me</NavLink>
+          <NavLink href="/projects/contact">Contact Me</NavLink>
         </div>
       </footer>
     </>

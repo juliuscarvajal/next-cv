@@ -83,9 +83,7 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
         </NavLink>
       )}
       <PopupModal
-        trigger={
-          <Button className="w-full md:w-auto font-bold">{`Let's Talk`}</Button>
-        }
+        trigger={<Button className="w-auto font-bold">{`Let's Talk`}</Button>}
         title="Contact me"
       >
         <EmailForm key={random()} />

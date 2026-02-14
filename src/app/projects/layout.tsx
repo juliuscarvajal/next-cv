@@ -9,7 +9,7 @@ export default function ProjectsLayout({
     <div className="space-y-8 pb-8 w-full max-w-2xl">
       <nav className="text-sm flex gap-4 items-center">
         <NavLink href="/">Home</NavLink>
-        <NavLink href="/projects/commercial">Commercial</NavLink>
+        <NavLink href="/projects/commercial">Work</NavLink>
         <NavLink href="/projects/personal">Personal</NavLink>
         <NavLink href="/projects/contact">Contact me</NavLink>
       </nav>
