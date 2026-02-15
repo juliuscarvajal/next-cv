@@ -60,11 +60,26 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
         </div>
       </section>
       {project.images && (
-        <section className="relative w-full h-[200px] overflow-hidden">
-          <section className="absolute inset py-4 flex gap-4 overflow-auto">
+        <section className="relative w-full h-[283px] overflow-x-auto">
+          <section className="absolute inset py-4 flex gap-4 overflow-y-hidden">
             {project.images?.map((image, idx) => {
               return (
-                <div key={`${image}${idx}`} className="shrink-0 w-[320px]">
+                <PopupModal
+                  key={`${image}${idx}`}
+                  title=""
+                  trigger={(
+                    <div className="shrink-0 w-[420px]">
+                      <AspectRatio ratio={16 / 9}>
+                        <Image
+                          src={image}
+                          alt="Image"
+                          className="rounded-md object-cover"
+                          fill
+                        />
+                      </AspectRatio>
+                    </div>
+                  )}
+                >
                   <AspectRatio ratio={16 / 9}>
                     <Image
                       src={image}
@@ -73,7 +88,7 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
                       fill
                     />
                   </AspectRatio>
-                </div>
+                </PopupModal>
               );
             })}
           </section>

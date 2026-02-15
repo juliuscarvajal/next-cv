@@ -15,7 +15,7 @@ export default function ProjectsLayout({
       </nav>
       <div className="divide-y">
         <div className="w-full pb-8">{children}</div>
-        <div className="flex items-center gap-6 pt-16">
+        <div className="flex items-center gap-4 pt-16">
           <ProfilePicture />
           <ProfileInfo />
         </div>

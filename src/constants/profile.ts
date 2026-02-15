@@ -7,8 +7,8 @@ templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 export const profileCopyText = {
   name: "Julius Carvajal",
   title: "Front End Web / Full Stack Developer",
-  email: "juliuscarvajal21@gmail.com",
-  altEmail: "hi@webarchi.tech",
+  email: "juliuscarvajal21+cv@gmail.com",
+  altEmail: "juliuscarvajal21+cv@gmail.com",
   header: {
     title: "Front End Web Developer",
     subtitle: "or a Full Stack Engineer when needed",

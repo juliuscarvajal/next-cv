@@ -213,7 +213,9 @@ export const Mailer = ({
                 )}
                 {!state?.data && (
                   <div className="space-y-2">
-                    <WithCaptcha>
+                    <WithCaptcha
+                      withDisclaimer={loading}
+                    >
                       <Button
                         type="submit"
                         disabled={!subject || !email || loading}
@@ -246,23 +248,25 @@ export const Mailer = ({
         <div className="flex gap-2 flex-wrap text-xs text-muted-foreground">
           <Label
             htmlFor="classic-contact-form"
-            className="text-xs cursor-pointer underline underline-offset-4 text-muted-foreground"
+            className="text-balance text-xs cursor-pointer underline underline-offset-4 text-muted-foreground"
           >
             {classicContactForm
               ? "Tap here to use your mail app instead."
               : "No mail app? Tap here to use classic contact form instead."}
           </Label>
-          <p>
+          <div>
             {classicContactForm ? (
               "Using your mail app enables you to edit the email body before sending."
             ) : (
-              <span className="flex gap-1">
-                <span>Or manually open your mail app and send to:</span>
-                <NavLink href={mailTo()}>{profileCopyText?.altEmail}</NavLink>
-                <CopyToClipboard text={profileCopyText.altEmail} />
-              </span>
+              <div className="flex gap-x-1 flex-wrap">
+                <div>Alternatively, you can email me at:</div>
+                <div className="flex gap-1">
+                  <NavLink href={mailTo()}>{profileCopyText?.altEmail}</NavLink>
+                  <CopyToClipboard text={profileCopyText.altEmail} />
+                </div>
+              </div>
             )}
-          </p>
+          </div>
           <Toggle
             id="classic-contact-form"
             className="hidden"

@@ -39,7 +39,6 @@ export const projects: Array<Project> = [
     images: [
       "/projects/optus/subhub-add-activate.png",
       "/projects/optus/subhub-add-modal.png",
-      "/projects/optus/subhub-add-modal.png",
     ],
   },
   {
