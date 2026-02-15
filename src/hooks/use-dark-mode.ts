@@ -16,8 +16,6 @@ type DarkModeOptions = {
 type DarkModeReturn = {
   isDarkMode: boolean;
   toggle: () => void;
-  enable: () => void;
-  disable: () => void;
   set: (value: boolean) => void;
 };
 
@@ -34,30 +32,29 @@ export function useDarkMode(options: DarkModeOptions = {}): DarkModeReturn {
   });
   const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
     localStorageKey,
-    defaultValue ?? isDarkOS ?? false,
+    defaultValue ?? isDarkOS,
     { initializeWithValue }
   );
 
   // Update darkMode if os prefers changes
   useEffect(() => {
-    if (isDarkOS !== isDarkMode) {
+    if (isDarkMode === undefined && isDarkOS) {
       setDarkMode(isDarkOS);
     }
   }, [isDarkMode, isDarkOS, setDarkMode]);
 
+  useEffect(() => {
+    const DARK_CLASS = "dark";
+    if (isDarkMode) {
+      document.documentElement.classList.add(DARK_CLASS);
+    } else {
+      document.documentElement.classList.remove(DARK_CLASS);
+    }
+  }, [isDarkMode]);
+
   return {
     isDarkMode,
-    toggle: () => {
-      setDarkMode((prev) => !prev);
-    },
-    enable: () => {
-      setDarkMode(true);
-    },
-    disable: () => {
-      setDarkMode(false);
-    },
-    set: (value) => {
-      setDarkMode(value);
-    },
+    toggle: () => setDarkMode((prev) => !prev),
+    set: (value) => setDarkMode(value),
   };
 }
