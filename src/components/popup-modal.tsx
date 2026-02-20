@@ -55,7 +55,7 @@ export const PopupModal = ({
       <PopupTrigger asChild>{trigger}</PopupTrigger>
       <PopupContent className={`max-h-[90%] ${className}`}>
         <PopupHeader>
-          <PopupTitle>{title}</PopupTitle>
+          <PopupTitle className="py-4">{title}</PopupTitle>
         </PopupHeader>
         <div className={`${isMobile ? "p-4" : ""}`}>{children}</div>
       </PopupContent>

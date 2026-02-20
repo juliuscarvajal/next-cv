@@ -60,21 +60,38 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
         </div>
       </section>
       {project.images && (
-        <section className="w-full py-4 flex flex-wrap gap-4">
-          {project.images?.map((image, idx) => {
-            return (
-              <div key={`${image}${idx}`} className="w-[320px]">
-                <AspectRatio ratio={16 / 9}>
-                  <Image
-                    src={image}
-                    alt="Image"
-                    className="rounded-md object-cover"
-                    fill
-                  />
-                </AspectRatio>
-              </div>
-            );
-          })}
+        <section className="relative w-full h-[283px] overflow-x-auto">
+          <section className="absolute inset py-4 flex gap-4 overflow-y-hidden">
+            {project.images?.map((image, idx) => {
+              return (
+                <PopupModal
+                  key={`${image}${idx}`}
+                  title=""
+                  trigger={(
+                    <div className="shrink-0 w-[420px]">
+                      <AspectRatio ratio={16 / 9}>
+                        <Image
+                          src={image}
+                          alt="Image"
+                          className="rounded-md object-cover"
+                          fill
+                        />
+                      </AspectRatio>
+                    </div>
+                  )}
+                >
+                  <AspectRatio ratio={16 / 9}>
+                    <Image
+                      src={image}
+                      alt="Image"
+                      className="rounded-md object-cover"
+                      fill
+                    />
+                  </AspectRatio>
+                </PopupModal>
+              );
+            })}
+          </section>
         </section>
       )}
       {project.cta && (
@@ -83,9 +100,7 @@ const ProjectListItem = ({ project, company }: ProjectListItemProps) => {
         </NavLink>
       )}
       <PopupModal
-        trigger={
-          <Button className="w-full md:w-auto font-bold">{`Let's Talk`}</Button>
-        }
+        trigger={<Button className="w-auto font-bold">{`Let's Talk`}</Button>}
         title="Contact me"
       >
         <EmailForm key={random()} />
@@ -102,10 +117,10 @@ type ProjectHeaderProps = {
 export const ProjectHeader = ({ title, subtitle }: ProjectHeaderProps) => {
   return (
     <div className="space-y-4">
-      <h1 className="text-4xl md:text-5xl leading-none font-[family-name:var(--font-archivo-black)]">
+      <h1 className="text-balance text-4xl md:text-5xl leading-none font-[family-name:var(--font-archivo-black)]">
         {title}
       </h1>
-      <h2 className="space-y-2">{subtitle}</h2>
+      <h2 className="text-balance space-y-2">{subtitle}</h2>
     </div>
   );
 };

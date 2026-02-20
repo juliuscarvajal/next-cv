@@ -13,6 +13,17 @@ export type Project = {
 export const projects: Array<Project> = [
   {
     name: "Optus",
+    title: "Expert AI",
+    subtitle: "Optus",
+    descriptions: [
+      "Optus has launched Optus Expert AI, a new agentic AI solution for frontline teams.",
+      "Optus Expert AI is designed to ensure every AI-guided frontline action is faster, better and more streamlined customer experience.",
+      "This solution has been developed on Google Cloud's Customer Engagement Suite using conversational AI solutions.",
+      "Implemented the browser popout POC using Document Picture-in-Picture with an iframe that resulted to solving existing limitation of UI visibility and potentially new CX ideas.",
+    ],
+  },
+  {
+    name: "Optus",
     title: "SubHub",
     subtitle: "Optus",
     descriptions: [
@@ -25,6 +36,10 @@ export const projects: Array<Project> = [
       label: "Go to SubHub (geo-blocked outside Australia)",
       href: "https://subhub.com.au",
     },
+    images: [
+      "/projects/optus/subhub-add-activate.png",
+      "/projects/optus/subhub-add-modal.png",
+    ],
   },
   {
     name: "Optus",
@@ -131,6 +146,10 @@ export const personalProjects: Array<Project> = [
       "However this is the first time I have seriously designed and built my own personal portfolio site.",
       "I also needed a reason to try out shadcn, Next.js App Router layouts and other stuff.",
     ],
+    cta: {
+      label: "Go to Home page",
+      href: "/",
+    },
   },
   {
     name: "Lottie",

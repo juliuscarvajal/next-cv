@@ -20,9 +20,7 @@ export const NavLink = ({
   const pathname = usePathname();
   const isActive = pathname === href;
   const isInternal = href.toString().startsWith("/");
-  const activeClasses = isActive
-    ? "text-accent-foreground font-bold"
-    : "text-muted-foreground";
+  const activeClasses = isActive ? "font-bold" : "";
   const internalNavClasses = isInternal ? activeClasses : "";
   const underlineClasses = underline ? "underline underline-offset-4" : "";
   const linkTarget = target || (isInternal ? undefined : "_blank");

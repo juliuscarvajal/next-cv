@@ -1,55 +1,43 @@
 import { EmailForm } from "@/components/email-form";
 import { NavLink } from "@/components/nav-link";
 import { ProjectHeader } from "@/components/projects-list";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { mailTo, profileCopyText } from "@/constants/profile";
 import { BriefcaseBusiness, Linkedin, Mail } from "lucide-react";
 
 const EmailSection = () => {
   return (
-    <Card className="bg-accent">
-      <CardHeader>
-        <h1 className="text-xl font-bold">Email</h1>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <EmailForm />
-      </CardContent>
-    </Card>
+    <EmailForm />
   );
 };
 
 const InfoSection = () => {
   return (
-    <Card className="bg-accent">
-      <CardHeader>
-        <h1 className="text-xl font-bold">Info</h1>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="flex gap-2 items-center">
-          <Linkedin />
-          <NavLink href="https://www.linkedin.com/in/juliuscarvajal">
-            LinkedIn
-          </NavLink>
-        </p>
-        <p className="flex gap-2 items-center">
-          <Mail />
-          <NavLink href={mailTo()}>{profileCopyText.altEmail}</NavLink>
-        </p>
-        <p className="flex gap-2 items-center">
-          <BriefcaseBusiness />
-          <NavLink href="https://abr.business.gov.au/ABN/View?id=27488015405">
-            ABN: 27 488 015 405
-          </NavLink>
-        </p>
-      </CardContent>
-    </Card>
+    <>
+      <p className="flex gap-2 items-center">
+        <Linkedin />
+        <NavLink href="https://www.linkedin.com/in/juliuscarvajal">
+          LinkedIn
+        </NavLink>
+      </p>
+      <p className="flex gap-2 items-center">
+        <Mail />
+        <NavLink href={mailTo()}>{profileCopyText.altEmail}</NavLink>
+      </p>
+      <p className="flex gap-2 items-center">
+        <BriefcaseBusiness />
+        <NavLink href="https://abr.business.gov.au/ABN/View?id=27488015405">
+          ABN: 27 488 015 405
+        </NavLink>
+      </p>
+    </>
   );
 };
 
 export default function Contact() {
   return (
     <div className="divide-y">
-      <div className="space-y-8 pb-8">
+      <div className="space-y-8">
         <div className="space-y-4">
           <ProjectHeader
             title="Need a hand with your web app?"
@@ -57,7 +45,9 @@ export default function Contact() {
               anytime."
           />
         </div>
+        <Separator />
         <EmailSection />
+        <Separator />
         <InfoSection />
       </div>
     </div>
